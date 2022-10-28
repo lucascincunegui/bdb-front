@@ -1,16 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { NavLinksDiv } from "./constants";
+import { StyledLink } from "./styles";
 
 export default function NavLinks() {
   return (
     <NavLinksDiv>
-      <Link style={{ marginRight: 10 }} exact to="/">
+      <StyledLink exact to="/">
         Home
-      </Link>
-      <Link style={{ marginRight: 10 }} exact to="/produtos">
+      </StyledLink>
+      <StyledLink exact to="/produtos">
         Produtos
-      </Link>
+      </StyledLink>
     </NavLinksDiv>
   );
 }
