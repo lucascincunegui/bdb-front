@@ -1,3 +1,4 @@
+import { Button } from "@material-ui/core";
 import styled from "styled-components";
 import { green, lightGray, black, white } from "../ui/colors";
 
@@ -18,7 +19,8 @@ export const Header = styled.div`
 //Text
 
 export const Title = styled.h1`
-  color: ${black};
+  color: ${green};
+  font-size: 50px;
   font-weight: bold;
 `;
 
@@ -47,9 +49,22 @@ export const Image = styled.img`
 
 //Button
 
-export const Button = styled.button`
+export const ButtonNav = styled.button`
   padding: 10px;
   border-radius: 5px;
   background-color: ${green};
   cursor: pointer;
 `;
+
+// export const ButtonPrev = styled(Button)`
+//   background-color: #fed227;
+//   color: ${green};
+//   font-weight: 600;
+//   margin-right: 20;
+// `;
+
+// export const ButtonNext = styled(Button)`
+//   background-color: #fed227;
+//   color: ${green};
+//   font-weight: 600;
+// `;

@@ -21,7 +21,11 @@ export default function MyRoutes() {
             <Title>Bulichu Dos Bichus</Title>
             <NavLinks />
           </SubHeader>
-          <img width={400} src="/assets/pagina.png" />
+          <img
+            style={{ border: "solid 1px rgb(254, 210, 39)" }}
+            width={450}
+            src="/assets/pagina.png"
+          />
         </Header>
         <div style={{ margin: 30 }}>
           <Routes>

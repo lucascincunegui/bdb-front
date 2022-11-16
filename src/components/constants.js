@@ -1,17 +1,18 @@
 import styled from "styled-components";
-import { yellow } from "../ui/colors";
+import { green, yellow } from "../ui/colors";
 
 export const Wrapper = styled.div`
   min-height: 800px;
+  background-color: rgba(254, 210, 39, 0.1);
+  /* background-color: rgba(0, 60, 34, 1); */
 `;
 
 export const Header = styled.div`
   display: flex;
   flex-flow: row;
   justify-content: space-around;
-  margin: 10px;
   padding: 20px;
-  border: solid 2px ${yellow};
+  border-bottom: solid 2px ${yellow};
 `;
 
 export const SubHeader = styled.div`
@@ -21,8 +22,7 @@ export const SubHeader = styled.div`
 `;
 
 export const Footer = styled.div`
-  margin: 10px;
-  border: solid 2px ${yellow};
+  border-top: solid 2px ${yellow};
   padding: 15px;
   display: flex;
   flex-direction: column;
@@ -51,4 +51,5 @@ export const Title = styled.h1`
   font-size: 60px;
   font-weight: bold;
   color: ${yellow};
+  text-shadow: 4px 2px ${green};
 `;
