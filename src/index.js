@@ -2,12 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import MyRoutes from "./routes/routes";
+import Navigation from "./routes/routes";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <MyRoutes />
+    <Navigation />
   </React.StrictMode>
 );
 
