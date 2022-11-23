@@ -1,6 +1,5 @@
-import { Grid } from "@material-ui/core";
 import React from "react";
-import { Button, ButtonGroup } from "@material-ui/core";
+import { Button, ButtonGroup, Grid } from "@material-ui/core";
 import { green } from "../ui/colors";
 import ProductCard from "../components/card";
 
@@ -33,7 +32,6 @@ export default function Lista(props) {
         >
           Anterior
         </Button>
-        <h1>Pagina:{props.currentPage}</h1>
         <Button
           onClick={props.nextHandler}
           style={{
