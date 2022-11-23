@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { DivProducts } from "./styles";
 import Lista from "../components/list";
+import { Paper } from "@material-ui/core";
 const productsArray = [
   {
     image: "/assets/racoes/golden.jpeg",
@@ -130,13 +131,15 @@ export default function Products() {
   };
 
   return (
-    <DivProducts>
-      <Lista
-        currentPage={currentPage}
-        items={items}
-        nextHandler={nextHandler}
-        prevHandler={prevHandler}
-      />
-    </DivProducts>
+    <Paper elevation={3}>
+      <DivProducts>
+        <Lista
+          currentPage={currentPage}
+          items={items}
+          nextHandler={nextHandler}
+          prevHandler={prevHandler}
+        />
+      </DivProducts>
+    </Paper>
   );
 }

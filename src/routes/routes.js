@@ -25,16 +25,18 @@ export default function MyRoutes() {
             />
           </Header>
         </Paper>
-        <div style={{ margin: 30 }}>
+        <div style={{ margin: 60 }}>
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/produtos" element={<Products />} />
             <Route path="*" element={<Error404 />} />
           </Routes>
         </div>
-        <Footer>
-          <Title>Pie de pagina</Title>
-        </Footer>
+        <Paper elevation={3}>
+          <Footer>
+            <Title>Pie de pagina</Title>
+          </Footer>
+        </Paper>
       </Router>
     </Wrapper>
   );
