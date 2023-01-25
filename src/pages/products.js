@@ -108,6 +108,7 @@ export default function Products() {
 
   const [currentPage, setCurrentPage] = useState(0);
 
+  //BOTON SIGUIENTE
   const nextHandler = () => {
     const totalItems = datosFromApi.length;
 
@@ -119,8 +120,11 @@ export default function Products() {
 
     setItems([...datosFromApi].splice(firstIndex, itemsPerPage));
     setCurrentPage(nextPage);
+
+    window.scrollTo({ top: 300, behavior: "smooth" });
   };
 
+  //BOTON ANTERIOR
   const prevHandler = () => {
     const prevPage = currentPage - 1;
 
@@ -128,6 +132,8 @@ export default function Products() {
     const firstIndex = prevPage * itemsPerPage;
     setItems([...datosFromApi].splice(firstIndex, itemsPerPage));
     setCurrentPage(prevPage);
+
+    window.scrollTo({ top: 300, behavior: "smooth" });
   };
 
   return (
