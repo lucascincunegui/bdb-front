@@ -1,5 +1,12 @@
 import React from "react";
-import { Card, CardContent, CardMedia, Typography } from "@material-ui/core";
+import {
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Divider,
+  Typography,
+} from "@material-ui/core";
 import { green, yellow } from "../ui/colors";
 
 export default function ProductCard({ name, value, image }) {
@@ -10,12 +17,13 @@ export default function ProductCard({ name, value, image }) {
         minWidth: "300px",
         margin: "30px",
         boxSizing: "border-box",
-        padding: "30px",
         borderColor: yellow,
         borderWidth: 3,
         borderStyle: "solid",
       }}
     >
+      <CardMedia style={{ minHeight: 300 }} alt="image" image={image} />
+      <Divider />
       <CardContent
         style={{
           borderRadius: 5,
@@ -31,17 +39,25 @@ export default function ProductCard({ name, value, image }) {
           {name}
         </Typography>
       </CardContent>
-      <CardMedia
-        style={{ minHeight: 200, margin: "40px" }}
-        alt="imagen"
-        image={image}
-      />
-
       <Typography
         style={{ textAlign: "right", fontWeight: "bold", fontSize: 30 }}
       >
         {value}
       </Typography>
+      <CardContent>
+        <Button
+          style={{
+            textAlign: "center",
+            fontWeight: "bold",
+            fontSize: 15,
+            backgroundColor: "#fed227",
+            color: `${green}`,
+            fontWeight: 600,
+          }}
+        >
+          Ver descrição
+        </Button>
+      </CardContent>
     </Card>
   );
 }
