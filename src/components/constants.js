@@ -15,12 +15,6 @@ export const Header = styled.div`
   border-bottom: solid 2px ${yellow};
 `;
 
-export const SubHeader = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-`;
-
 export const Footer = styled.div`
   border-top: solid 2px ${yellow};
   padding: 15px;
