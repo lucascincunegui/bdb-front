@@ -1,4 +1,3 @@
-import { Button } from "@material-ui/core";
 import styled from "styled-components";
 import { green, lightGray, black, white } from "../ui/colors";
 
@@ -14,6 +13,13 @@ export const Header = styled.div`
   flex-direction: row;
   background-color: ${green};
   align-items: center;
+`;
+
+export const DivProducts = styled.div`
+  border-radius: 10;
+  text-align: center;
+  background-color: ${green};
+  padding: 10;
 `;
 
 //Text

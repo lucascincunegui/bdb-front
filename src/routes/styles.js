@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { green, lightGray, black, white } from "../ui/colors";
+import { green } from "../ui/colors";
 
 export const Header = styled.div`
   display: flex;

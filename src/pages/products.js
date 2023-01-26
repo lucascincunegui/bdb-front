@@ -1,8 +1,7 @@
-import { Button, ButtonGroup } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
+import { DivProducts } from "./styles";
 import Lista from "../components/list";
 import { Paper } from "@material-ui/core";
-
 const productsArray = [
   {
     image: "/assets/racoes/golden.jpeg",

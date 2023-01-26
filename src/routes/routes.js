@@ -19,6 +19,7 @@ export default function MyRoutes() {
               <NavLinks />
             </SubHeader>
             <img
+              alt="pagina"
               style={{ border: "solid 1px rgb(254, 210, 39)" }}
               width={450}
               src="/assets/pagina.png"
