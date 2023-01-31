@@ -101,7 +101,7 @@ const itemsPerPage = 9;
 
 export default function Products() {
   const [datosFromApi, setDatosFromApi] = useState(productsArray);
-  console.log(productsArray);
+  // console.log(productsArray);
   const [items, setItems] = useState(
     [...productsArray].splice(0, itemsPerPage)
   );

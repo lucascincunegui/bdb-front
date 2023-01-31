@@ -6,7 +6,12 @@ import ProductCard from "../components/card";
 export default function Lista(props) {
   const items = props.items.map((card, index) => {
     return (
-      <ProductCard name={card.name} value={card.value} image={card.image} />
+      <ProductCard
+        key={index}
+        name={card.name}
+        value={card.value}
+        image={card.image}
+      />
     );
   });
   return (
