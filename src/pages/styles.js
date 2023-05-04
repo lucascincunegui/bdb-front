@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { green, lightGray, black, white } from "../ui/colors";
+import { green, lightGray, black, white, yellow } from "../ui/colors";
 
 //Divs
 
@@ -18,8 +18,18 @@ export const Header = styled.div`
 export const DivProducts = styled.div`
   border-radius: 10;
   text-align: center;
-  background-color: ${green};
   padding: 10;
+`;
+
+//INPUTS
+
+export const InputFilter = styled.input`
+  margin-top: 30px;
+  margin-left: 30px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 5px solid ${yellow};
+  font-weight: 600;
 `;
 
 //Text

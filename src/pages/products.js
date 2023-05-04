@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-import { DivProducts } from "./styles";
+import React, { useEffect, useState } from "react";
+import { DivProducts, InputFilter } from "./styles";
 import Lista from "../components/list";
 import { Paper } from "@material-ui/core";
+import { green } from "../ui/colors";
+import axios from "axios";
 const productsArray = [
   {
     image: "/assets/racoes/golden.jpeg",
@@ -100,6 +102,26 @@ const productsArray = [
 const itemsPerPage = 9;
 
 export default function Products() {
+  // const pokeapi = axios
+  //   .get("https://pokeapi.co/api/v2/pokemon/")
+  //   .then((res) => {
+  //     const pokedata = res.data.results;
+  //     console.log(pokedata);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
+
+  // const loadData = () => {
+  //   axios.get("https://pokeapi.co/api/v2/pokemon?limit=10").then((resp) => {
+  //     for (let i = 0; i < resp.data.results.length; i++) {
+  //       axios.get(resp.data.results[i].url).then((result) => {
+  //         setPokemon((prevArray) => [...prevArray, result.data]);
+  //       });
+  //     }
+  //   });
+  // };
+  const [busqueda, setBusqueda] = useState([]);
   const [datosFromApi, setDatosFromApi] = useState(productsArray);
   //console.log(productsArray);
   const [items, setItems] = useState(
@@ -136,16 +158,49 @@ export default function Products() {
     window.scrollTo({ top: 300, behavior: "smooth" });
   };
 
+  //FILTRAR PRODUCTOS
+  const handleChange = (e) => {
+    setBusqueda(e.target.value);
+    filtrar(e.target.value);
+  };
+
+  const filtrar = (terminoBusqueda) => {
+    var resultadosBusqueda = productsArray.filter((elemento) => {
+      if (
+        elemento.name
+          .toString()
+          .toLowerCase()
+          .includes(terminoBusqueda.toLowerCase())
+      ) {
+        return elemento;
+      }
+    });
+    setBusqueda(resultadosBusqueda);
+  };
+
   return (
-    <Paper elevation={3}>
-      <DivProducts>
-        <Lista
-          currentPage={currentPage}
-          items={items}
-          nextHandler={nextHandler}
-          prevHandler={prevHandler}
+    <>
+      <Paper
+        style={{
+          backgroundColor: green,
+        }}
+        elevation={3}
+      >
+        <InputFilter
+          onChange={handleChange}
+          value={busqueda}
+          placeholder="Búsqueda por Nome"
         />
-      </DivProducts>
-    </Paper>
+
+        <DivProducts>
+          <Lista
+            currentPage={currentPage}
+            items={items}
+            nextHandler={nextHandler}
+            prevHandler={prevHandler}
+          />
+        </DivProducts>
+      </Paper>
+    </>
   );
 }
