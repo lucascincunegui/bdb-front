@@ -10,6 +10,10 @@ import {
 import { green, yellow } from "../ui/colors";
 
 export default function ProductCard({ name, value, image }) {
+  function formatWords(str) {
+    return str[0].toUpperCase() + str.slice(1);
+  }
+
   return (
     <Card
       style={{
@@ -32,18 +36,20 @@ export default function ProductCard({ name, value, image }) {
         <Typography
           style={{
             textAlign: "left",
-            fontWeight: "bold",
             fontSize: 25,
           }}
         >
-          {name}
+          {formatWords(name)}
+        </Typography>
+        <Typography
+          style={{
+            textAlign: "right",
+            fontSize: 25,
+          }}
+        >
+          {"R$ " + value + ",00"}
         </Typography>
       </CardContent>
-      <Typography
-        style={{ textAlign: "right", fontWeight: "bold", fontSize: 30 }}
-      >
-        {value}
-      </Typography>
       <CardContent>
         <Button
           style={{
