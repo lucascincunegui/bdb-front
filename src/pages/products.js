@@ -1,132 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { DivProducts, InputFilter } from "./styles";
 import Lista from "../components/list";
-import { Paper } from "@material-ui/core";
 import { green } from "../ui/colors";
 import axios from "axios";
-const productsArray = [
-  {
-    image: "/assets/racoes/golden.jpeg",
-    value: "R$ 122,00",
-    name: "Golden",
-  },
-
-  {
-    image: "/assets/racoes/sapeca.jpeg",
-    value: "R$ 100,00",
-    name: "Sapeca",
-  },
-
-  {
-    image: "/assets/racoes/pastel dog.jpeg",
-    value: "R$ 140,00",
-    name: "Pastel Dog",
-  },
-
-  {
-    image: "/assets/racoes/premier.jpeg",
-    value: "R$ 140,00",
-    name: "Premier",
-  },
-  {
-    image: "/assets/racoes/golden.jpeg",
-    value: "R$ 122,00",
-    name: "Golden",
-  },
-
-  {
-    image: "/assets/racoes/sapeca.jpeg",
-    value: "R$ 100,00",
-    name: "Sapeca",
-  },
-
-  {
-    image: "/assets/racoes/pastel dog.jpeg",
-    value: "R$ 140,00",
-    name: "Pastel Dog",
-  },
-
-  {
-    image: "/assets/racoes/premier.jpeg",
-    value: "R$ 140,00",
-    name: "Premier",
-  },
-  {
-    image: "/assets/racoes/golden.jpeg",
-    value: "R$ 122,00",
-    name: "Golden",
-  },
-
-  {
-    image: "/assets/racoes/sapeca.jpeg",
-    value: "R$ 100,00",
-    name: "Sapeca",
-  },
-
-  {
-    image: "/assets/racoes/pastel dog.jpeg",
-    value: "R$ 140,00",
-    name: "Pastel Dog",
-  },
-
-  {
-    image: "/assets/racoes/premier.jpeg",
-    value: "R$ 140,00",
-    name: "Premier",
-  },
-  {
-    image: "/assets/racoes/golden.jpeg",
-    value: "R$ 122,00",
-    name: "Golden",
-  },
-
-  {
-    image: "/assets/racoes/sapeca.jpeg",
-    value: "R$ 100,00",
-    name: "Sapeca",
-  },
-
-  {
-    image: "/assets/racoes/pastel dog.jpeg",
-    value: "R$ 140,00",
-    name: "Pastel Dog",
-  },
-
-  {
-    image: "/assets/racoes/premier.jpeg",
-    value: "R$ 140,00",
-    name: "Premier",
-  },
-];
-
-const itemsPerPage = 9;
+import { Paper } from "@material-ui/core";
 
 export default function Products() {
-  // const pokeapi = axios
-  //   .get("https://pokeapi.co/api/v2/pokemon/")
-  //   .then((res) => {
-  //     const pokedata = res.data.results;
-  //     console.log(pokedata);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
+  const loadData = () => {
+    axios.get("https://pokeapi.co/api/v2/pokemon").then((resp) => {
+      for (let i = 0; i < resp.data.results.length; i++) {
+        axios.get(resp.data.results[i].url).then((result) => {
+          setPokemons((prevArray) => [...prevArray, result.data]);
+          //falta ordenar pokemons por indice
+        });
+      }
+    });
+  };
 
-  // const loadData = () => {
-  //   axios.get("https://pokeapi.co/api/v2/pokemon?limit=10").then((resp) => {
-  //     for (let i = 0; i < resp.data.results.length; i++) {
-  //       axios.get(resp.data.results[i].url).then((result) => {
-  //         setPokemon((prevArray) => [...prevArray, result.data]);
-  //       });
-  //     }
-  //   });
-  // };
+  useEffect(loadData, []);
+
+  const itemsPerPage = 9;
   const [busqueda, setBusqueda] = useState([]);
-  const [datosFromApi, setDatosFromApi] = useState(productsArray);
-  //console.log(productsArray);
-  const [items, setItems] = useState(
-    [...productsArray].splice(0, itemsPerPage)
-  );
+  const [pokemons, setPokemons] = useState([]);
+  const [datosFromApi, setDatosFromApi] = useState(pokemons);
+  const [items, setItems] = useState([...pokemons].splice(0, itemsPerPage));
 
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -165,7 +62,7 @@ export default function Products() {
   };
 
   const filtrar = (terminoBusqueda) => {
-    var resultadosBusqueda = productsArray.filter((elemento) => {
+    var resultadosBusqueda = pokemons.filter((elemento) => {
       if (
         elemento.name
           .toString()
@@ -194,8 +91,8 @@ export default function Products() {
 
         <DivProducts>
           <Lista
+            pokemons={pokemons}
             currentPage={currentPage}
-            items={items}
             nextHandler={nextHandler}
             prevHandler={prevHandler}
           />
