@@ -4,25 +4,26 @@ import { green } from "../ui/colors";
 import ProductCard from "../components/card";
 
 export default function Lista(props) {
-  const pokemons = props.pokemons.map((poke, index) => (
+  const product = props.product.map((product, index) => (
     <ProductCard
       key={index}
-      name={poke.name}
-      value={poke.base_experience}
-      image={poke.sprites.front_default}
+      name={product.nombre}
+      value={product.valor}
+      // image={product.sprites.front_default}
     />
   ));
   return (
     <>
-      <Grid
-        style={{ padding: 30 }}
-        container
-        spacing={3}
-        justifyContent="center"
-      >
-        {pokemons}
+      <Grid style={{ minHeight: 2300 }}>
+        <Grid
+          style={{ padding: 30 }}
+          container
+          spacing={3}
+          justifyContent="center"
+        >
+          {product}
+        </Grid>
       </Grid>
-
       <ButtonGroup style={{ marginBottom: 40 }} orientation="horizontal">
         <Button
           onClick={props.prevHandler}
