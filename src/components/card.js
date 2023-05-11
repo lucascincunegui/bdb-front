@@ -36,18 +36,18 @@ export default function ProductCard({ name, value, image }) {
         <Typography
           style={{
             textAlign: "left",
-            fontSize: 25,
+            fontSize: 22,
           }}
         >
-          {formatWords(name)}
+          {"R$ " + value}
         </Typography>
         <Typography
           style={{
-            textAlign: "right",
-            fontSize: 25,
+            textAlign: "left",
+            fontSize: 18,
           }}
         >
-          {"R$ " + value + ",00"}
+          {formatWords(name)}
         </Typography>
       </CardContent>
       <CardContent>

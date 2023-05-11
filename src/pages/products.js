@@ -6,26 +6,24 @@ import axios from "axios";
 import { Paper } from "@material-ui/core";
 
 export default function Products() {
+  const itemsPerPage = 9;
+  const [busqueda, setBusqueda] = useState([]);
+  const [product, setProduct] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [datosFromApi, setDatosFromApi] = useState(product);
+  const [items, setItems] = useState([...product].splice(0, itemsPerPage));
+
+  const [currentPage, setCurrentPage] = useState(0);
+
   const loadData = () => {
-    axios.get("https://pokeapi.co/api/v2/pokemon").then((resp) => {
-      for (let i = 0; i < resp.data.results.length; i++) {
-        axios.get(resp.data.results[i].url).then((result) => {
-          setPokemons((prevArray) => [...prevArray, result.data]);
-          //falta ordenar pokemons por indice
-        });
-      }
+    axios.get("http://localhost:4000/Productos").then((result) => {
+      setProduct(result.data);
+      setProducts(result.data);
     });
   };
 
   useEffect(loadData, []);
-
-  const itemsPerPage = 9;
-  const [busqueda, setBusqueda] = useState([]);
-  const [pokemons, setPokemons] = useState([]);
-  const [datosFromApi, setDatosFromApi] = useState(pokemons);
-  const [items, setItems] = useState([...pokemons].splice(0, itemsPerPage));
-
-  const [currentPage, setCurrentPage] = useState(0);
+  console.log(product);
 
   //BOTON SIGUIENTE
   const nextHandler = () => {
@@ -59,12 +57,13 @@ export default function Products() {
   const handleChange = (e) => {
     setBusqueda(e.target.value);
     filtrar(e.target.value);
+    // console.log(busqueda);
   };
 
   const filtrar = (terminoBusqueda) => {
-    var resultadosBusqueda = pokemons.filter((elemento) => {
+    var resultadosBusqueda = products.filter((elemento) => {
       if (
-        elemento.name
+        elemento.nombre
           .toString()
           .toLowerCase()
           .includes(terminoBusqueda.toLowerCase())
@@ -72,7 +71,7 @@ export default function Products() {
         return elemento;
       }
     });
-    setBusqueda(resultadosBusqueda);
+    setProduct(resultadosBusqueda);
   };
 
   return (
@@ -91,7 +90,7 @@ export default function Products() {
 
         <DivProducts>
           <Lista
-            pokemons={pokemons}
+            product={product}
             currentPage={currentPage}
             nextHandler={nextHandler}
             prevHandler={prevHandler}
