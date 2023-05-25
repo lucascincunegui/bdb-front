@@ -8,11 +8,17 @@ import {
   Typography,
 } from "@material-ui/core";
 import { green, yellow } from "../ui/colors";
+import { CardContainer } from "./styles";
 
-export default function ProductCard({ name, value, image }) {
+export default function ProductCard({ name, value, link }) {
   function formatWords(str) {
     return str[0].toUpperCase() + str.slice(1);
   }
+
+  const formatedValue = value.toLocaleString("pt-br", {
+    style: "currency",
+    currency: "BRL",
+  });
 
   return (
     <Card
@@ -26,7 +32,13 @@ export default function ProductCard({ name, value, image }) {
         borderStyle: "solid",
       }}
     >
-      <CardMedia style={{ minHeight: 300 }} alt="image" image={image} />
+      <CardContainer>
+        <CardMedia
+          style={{ width: 295, height: 170 }}
+          alt={"image " + name}
+          image={link}
+        />
+      </CardContainer>
       <Divider />
       <CardContent
         style={{
@@ -39,7 +51,7 @@ export default function ProductCard({ name, value, image }) {
             fontSize: 22,
           }}
         >
-          {"R$ " + value}
+          {formatedValue}
         </Typography>
         <Typography
           style={{
@@ -54,7 +66,6 @@ export default function ProductCard({ name, value, image }) {
         <Button
           style={{
             textAlign: "center",
-            fontWeight: "bold",
             fontSize: 15,
             backgroundColor: "#fed227",
             color: `${green}`,

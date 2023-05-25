@@ -23,8 +23,6 @@ export default function Products() {
   };
 
   useEffect(loadData, []);
-  console.log(product);
-
   //BOTON SIGUIENTE
   const nextHandler = () => {
     const totalItems = datosFromApi.length;
