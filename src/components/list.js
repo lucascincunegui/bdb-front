@@ -9,9 +9,10 @@ export default function Lista(props) {
       key={index}
       name={product.nombre}
       value={product.valor}
-      // image={product.sprites.front_default}
+      link={product.link}
     />
   ));
+
   return (
     <>
       <Grid style={{ minHeight: 2300 }}>
