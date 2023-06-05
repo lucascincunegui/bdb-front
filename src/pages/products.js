@@ -6,50 +6,17 @@ import axios from "axios";
 import { Paper } from "@material-ui/core";
 
 export default function Products() {
-  const itemsPerPage = 9;
   const [busqueda, setBusqueda] = useState([]);
-  const [product, setProduct] = useState([]);
   const [products, setProducts] = useState([]);
-  const [datosFromApi, setDatosFromApi] = useState(product);
-  const [items, setItems] = useState([...product].splice(0, itemsPerPage));
-
-  const [currentPage, setCurrentPage] = useState(0);
 
   const loadData = () => {
     axios.get("http://localhost:4000/Productos").then((result) => {
-      setProduct(result.data);
       setProducts(result.data);
+      // console.log(products);
     });
   };
 
   useEffect(loadData, []);
-  //BOTON SIGUIENTE
-  const nextHandler = () => {
-    const totalItems = datosFromApi.length;
-
-    const nextPage = currentPage + 1;
-
-    const firstIndex = nextPage * itemsPerPage;
-
-    if (firstIndex === totalItems) return;
-
-    setItems([...datosFromApi].splice(firstIndex, itemsPerPage));
-    setCurrentPage(nextPage);
-
-    window.scrollTo({ top: 300, behavior: "smooth" });
-  };
-
-  //BOTON ANTERIOR
-  const prevHandler = () => {
-    const prevPage = currentPage - 1;
-
-    if (prevPage < 0) return;
-    const firstIndex = prevPage * itemsPerPage;
-    setItems([...datosFromApi].splice(firstIndex, itemsPerPage));
-    setCurrentPage(prevPage);
-
-    window.scrollTo({ top: 300, behavior: "smooth" });
-  };
 
   //FILTRAR PRODUCTOS
   const handleChange = (e) => {
@@ -69,7 +36,7 @@ export default function Products() {
         return elemento;
       }
     });
-    setProduct(resultadosBusqueda);
+    setProducts(resultadosBusqueda);
   };
 
   return (
@@ -87,12 +54,7 @@ export default function Products() {
         />
 
         <DivProducts>
-          <Lista
-            product={product}
-            currentPage={currentPage}
-            nextHandler={nextHandler}
-            prevHandler={prevHandler}
-          />
+          <Lista products={products} />
         </DivProducts>
       </Paper>
     </>
