@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   Card,
@@ -20,8 +20,20 @@ export default function ProductCard({ name, value, link }) {
     currency: "BRL",
   });
 
+  const [isHover, setIsHover] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHover(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHover(false);
+  };
+
   return (
     <Card
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       style={{
         textAlign: "center",
         minWidth: "300px",
@@ -31,6 +43,11 @@ export default function ProductCard({ name, value, link }) {
         borderColor: yellow,
         borderWidth: 3,
         borderStyle: "solid",
+        transition: "transform 0.5s",
+        transform: isHover ? `scale(1.1)` : null,
+        display: "flex",
+        flexFlow: "column nowrap",
+        justifyContent: "space-around",
       }}
     >
       <CardContainer>
@@ -63,8 +80,8 @@ export default function ProductCard({ name, value, link }) {
           style={{
             textAlign: "center",
             fontSize: 15,
-            backgroundColor: "#fed227",
-            color: `${green}`,
+            backgroundColor: yellow,
+            color: green,
             fontWeight: 600,
           }}
         >
