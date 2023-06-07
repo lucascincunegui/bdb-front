@@ -25,6 +25,7 @@ export default function ProductCard({ name, value, link }) {
       style={{
         textAlign: "center",
         minWidth: "300px",
+        maxWidth: "300px",
         margin: "30px",
         boxSizing: "border-box",
         borderColor: yellow,
@@ -34,7 +35,7 @@ export default function ProductCard({ name, value, link }) {
     >
       <CardContainer>
         <CardMedia
-          style={{ width: 295, height: 170 }}
+          style={{ width: `100%`, height: `100%` }}
           alt={"image " + name}
           image={link}
         />
@@ -53,12 +54,7 @@ export default function ProductCard({ name, value, link }) {
         >
           {formatedValue}
         </Typography>
-        <Typography
-          style={{
-            textAlign: "left",
-            fontSize: 18,
-          }}
-        >
+        <Typography style={{ textAlign: "left", fontSize: 18 }}>
           {formatWords(name)}
         </Typography>
       </CardContent>
