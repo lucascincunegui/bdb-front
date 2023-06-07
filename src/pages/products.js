@@ -7,12 +7,13 @@ import { Paper } from "@material-ui/core";
 
 export default function Products() {
   const [busqueda, setBusqueda] = useState([]);
+  const [product, setProduct] = useState([]);
   const [products, setProducts] = useState([]);
 
   const loadData = () => {
     axios.get("http://localhost:4000/Productos").then((result) => {
+      setProduct(result.data);
       setProducts(result.data);
-      // console.log(products);
     });
   };
 
@@ -26,7 +27,7 @@ export default function Products() {
   };
 
   const filtrar = (terminoBusqueda) => {
-    var resultadosBusqueda = products.filter((elemento) => {
+    var resultadosBusqueda = product.filter((elemento) => {
       if (
         elemento.nombre
           .toString()
