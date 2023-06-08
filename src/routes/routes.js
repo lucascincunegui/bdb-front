@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Footer, Title, Wrapper } from "../components/constants";
-import { Header, SubHeader } from "./styles";
+import { Header, SubHeader, Title, Footer, Wrapper } from "./styles";
 import NavLinks from "../components/navLinks";
 import Home from "../pages/home";
 import Products from "../pages/products";
@@ -26,13 +25,11 @@ export default function MyRoutes() {
             />
           </Header>
         </Paper>
-        <div style={{ margin: 60 }}>
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/produtos" element={<Products />} />
-            <Route path="*" element={<Error404 />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/produtos" element={<Products />} />
+          <Route path="*" element={<Error404 />} />
+        </Routes>
         <Paper elevation={3}>
           <Footer>
             <Title>Pie de pagina</Title>
