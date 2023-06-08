@@ -1,21 +1,59 @@
-import React from "react";
-import { Card, CardContent, CardMedia, Typography } from "@material-ui/core";
+import React, { useState } from "react";
+import {
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Divider,
+  Typography,
+} from "@material-ui/core";
 import { green, yellow } from "../ui/colors";
+import { CardContainer } from "./styles";
 
-export default function ProductCard({ name, value, image }) {
+export default function ProductCard({ name, value, link }) {
+  const formatedValue = value.toLocaleString("pt-br", {
+    style: "currency",
+    currency: "BRL",
+  });
+
+  const [isHover, setIsHover] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHover(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHover(false);
+  };
+
   return (
     <Card
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       style={{
         textAlign: "center",
         minWidth: "300px",
+        maxWidth: "300px",
         margin: "30px",
         boxSizing: "border-box",
-        padding: "30px",
         borderColor: yellow,
         borderWidth: 3,
         borderStyle: "solid",
+        transition: "transform 0.5s",
+        transform: isHover ? `scale(1.1)` : null,
+        display: "flex",
+        flexFlow: "column nowrap",
+        justifyContent: "space-around",
       }}
     >
+      <CardContainer>
+        <CardMedia
+          style={{ width: `100%`, height: `100%` }}
+          alt={"image " + name}
+          image={link}
+        />
+      </CardContainer>
+      <Divider />
       <CardContent
         style={{
           borderRadius: 5,
@@ -24,24 +62,39 @@ export default function ProductCard({ name, value, image }) {
         <Typography
           style={{
             textAlign: "left",
-            fontWeight: "bold",
-            fontSize: 25,
+            fontSize: 22,
+          }}
+        >
+          {formatedValue}
+        </Typography>
+        <Typography
+          style={{
+            textAlign: "left",
+            textTransform: "capitalize",
+            textOverflow: "ellipsis",
+            fontSize: 15,
+            lineHeight: 1.3,
+            overflow: "hidden",
+            whiteSpace: "nowrap",
+            paddingRight: 20,
           }}
         >
           {name}
         </Typography>
       </CardContent>
-      <CardMedia
-        style={{ minHeight: 200, margin: "40px" }}
-        alt="imagen"
-        image={image}
-      />
-
-      <Typography
-        style={{ textAlign: "right", fontWeight: "bold", fontSize: 30 }}
-      >
-        {value}
-      </Typography>
+      <CardContent>
+        <Button
+          style={{
+            textAlign: "center",
+            fontSize: 15,
+            backgroundColor: yellow,
+            color: green,
+            fontWeight: 600,
+          }}
+        >
+          Ver descrição
+        </Button>
+      </CardContent>
     </Card>
   );
 }

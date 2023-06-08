@@ -7,7 +7,7 @@ import { StyledLink } from "./styles";
 export default function NavLinks() {
   return (
     <NavLinksDiv>
-      <StyledLink exact to="/">
+      <StyledLink exact="true" to="/">
         <Button
           style={{
             backgroundColor: "#fed227",
@@ -20,7 +20,7 @@ export default function NavLinks() {
           Inicio
         </Button>
       </StyledLink>
-      <StyledLink exact to="/produtos">
+      <StyledLink exact="true" to="/produtos">
         <Button
           style={{
             backgroundColor: "#fed227",

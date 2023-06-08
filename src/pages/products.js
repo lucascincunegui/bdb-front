@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DivProducts } from "./styles";
 import Lista from "../components/list";
+import axios from "axios";
 const productsArray = [
   {
     image: "/assets/racoes/golden.jpeg",
@@ -99,8 +100,15 @@ const productsArray = [
 const itemsPerPage = 9;
 
 export default function Products() {
+  // const [products, setProducts] = useState([]);
+  // const loadData = () => {
+  //   axios.get("http://localhost:4000/Productos").then((result) => {
+  //     setProducts(result.data);
+  //   });
+  // };
+  // useEffect(loadData, []);
+
   const [datosFromApi, setDatosFromApi] = useState(productsArray);
-  console.log(productsArray);
   const [items, setItems] = useState(
     [...productsArray].splice(0, itemsPerPage)
   );

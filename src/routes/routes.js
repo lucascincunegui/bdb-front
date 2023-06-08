@@ -25,6 +25,7 @@ export default function MyRoutes() {
             style={{ border: "solid 1px rgb(254, 210, 39)" }}
             width={450}
             src="/assets/pagina.png"
+            alt="hola"
           />
         </Header>
         <div style={{ margin: 30 }}>

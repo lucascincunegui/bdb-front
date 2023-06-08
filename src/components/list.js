@@ -5,11 +5,17 @@ import { green } from "../ui/colors";
 import ProductCard from "../components/card";
 
 export default function Lista(props) {
-  const items = props.items.map((card, index) => {
+  const items = props.items.map((items, index) => {
     return (
-      <ProductCard name={card.name} value={card.value} image={card.image} />
+      <ProductCard
+        key={index}
+        name={items.name}
+        value={items.value}
+        link={items.image}
+      />
     );
   });
+
   return (
     <>
       <Grid
