@@ -11,10 +11,6 @@ import { green, yellow } from "../ui/colors";
 import { CardContainer } from "./styles";
 
 export default function ProductCard({ name, value, link }) {
-  function formatWords(str) {
-    return str[0].toUpperCase() + str.slice(1);
-  }
-
   const formatedValue = value.toLocaleString("pt-br", {
     style: "currency",
     currency: "BRL",
@@ -71,8 +67,19 @@ export default function ProductCard({ name, value, link }) {
         >
           {formatedValue}
         </Typography>
-        <Typography style={{ textAlign: "left", fontSize: 18 }}>
-          {formatWords(name)}
+        <Typography
+          style={{
+            textAlign: "left",
+            textTransform: "capitalize",
+            textOverflow: "ellipsis",
+            fontSize: 15,
+            lineHeight: 1.3,
+            overflow: "hidden",
+            whiteSpace: "nowrap",
+            paddingRight: 20,
+          }}
+        >
+          {name}
         </Typography>
       </CardContent>
       <CardContent>
