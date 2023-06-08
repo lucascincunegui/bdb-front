@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { DivProducts, InputFilter } from "./styles";
+import { InputFilter, ProductsPaper } from "./styles";
 import Lista from "../components/list";
-import { green } from "../ui/colors";
 import axios from "axios";
-import { Paper } from "@material-ui/core";
 
 export default function Products() {
   const [busqueda, setBusqueda] = useState([]);
@@ -23,7 +21,6 @@ export default function Products() {
   const handleChange = (e) => {
     setBusqueda(e.target.value);
     filtrar(e.target.value);
-    // console.log(busqueda);
   };
 
   const filtrar = (terminoBusqueda) => {
@@ -41,23 +38,14 @@ export default function Products() {
   };
 
   return (
-    <>
-      <Paper
-        style={{
-          backgroundColor: green,
-        }}
-        elevation={3}
-      >
-        <InputFilter
-          onChange={handleChange}
-          value={busqueda}
-          placeholder="Búsqueda por Nome"
-        />
+    <ProductsPaper>
+      <InputFilter
+        onChange={handleChange}
+        value={busqueda}
+        placeholder="Búsqueda por Nome"
+      />
 
-        <DivProducts>
-          <Lista products={products} />
-        </DivProducts>
-      </Paper>
-    </>
+      <Lista products={products} />
+    </ProductsPaper>
   );
 }

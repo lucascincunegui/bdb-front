@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { green, lightGray, black, white, yellow } from "../ui/colors";
+import { green, lightGray, black, yellow } from "../ui/colors";
+import { Paper } from "@material-ui/core";
 
 //Divs
 
@@ -8,24 +9,15 @@ export const Container = styled.div`
   padding: 10px 10px 10px 10px;
 `;
 
-export const Header = styled.div`
-  display: flex;
-  flex-direction: row;
-  background-color: ${green};
-  align-items: center;
+export const ProductsPaper = styled(Paper)`
+  && {
+    background-color: #f0f0f0d9;
+    text-align: center;
+  }
 `;
-
-export const DivProducts = styled.div`
-  border-radius: 10;
-  text-align: center;
-  padding: 10;
-`;
-
-//INPUTS
 
 export const InputFilter = styled.input`
   margin-top: 30px;
-  margin-left: 30px;
   padding: 10px;
   border-radius: 4px;
   border: 5px solid ${yellow};
@@ -50,12 +42,6 @@ export const Parrafo = styled.p`
   font-size: 20px;
 `;
 
-export const TextButton = styled.p`
-  color: ${white};
-  font-size: 20px;
-  font-weight: bold;
-`;
-
 //Image
 
 export const Image = styled.img`
@@ -71,16 +57,3 @@ export const ButtonNav = styled.button`
   background-color: ${green};
   cursor: pointer;
 `;
-
-// export const ButtonPrev = styled(Button)`
-//   background-color: #fed227;
-//   color: ${green};
-//   font-weight: 600;
-//   margin-right: 20;
-// `;
-
-// export const ButtonNext = styled(Button)`
-//   background-color: #fed227;
-//   color: ${green};
-//   font-weight: 600;
-// `;

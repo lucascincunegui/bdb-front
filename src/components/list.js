@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Button, ButtonGroup, Grid } from "@material-ui/core";
-import { green, yellow } from "../ui/colors";
+import { Grid } from "@material-ui/core";
 import ProductCard from "../components/card";
+import { ItemsGrid, StyledBtn, PageNumber, StyledBtnGroup } from "./styles";
 
 export default function Lista({ products }) {
   const itemsPerPage = 9;
@@ -50,49 +50,19 @@ export default function Lista({ products }) {
   return (
     <>
       <Grid style={{ minHeight: 1500 }}>
-        <Grid
-          style={{ padding: "7%" }}
-          container
-          spacing={3}
-          justifyContent="left"
-        >
+        <ItemsGrid container spacing={3}>
           {product}
-        </Grid>
+        </ItemsGrid>
       </Grid>
-      <ButtonGroup style={{ marginBottom: 40 }} orientation="horizontal">
-        <Button
-          onClick={prevHandler}
-          style={{
-            backgroundColor: "#fed227",
-            color: `${green}`,
-            fontWeight: 600,
-            marginRight: 20,
-          }}
-          variant="contained"
-        >
+      <StyledBtnGroup orientation="horizontal">
+        <StyledBtn onClick={prevHandler} variant="contained">
           Anterior
-        </Button>
-        <h1
-          style={{
-            color: `${yellow}`,
-            fontWeight: 600,
-            margin: 10,
-          }}
-        >
-          Pagina - {currentPage}
-        </h1>
-        <Button
-          onClick={nextHandler}
-          style={{
-            backgroundColor: "#fed227",
-            color: `${green}`,
-            fontWeight: 600,
-          }}
-          variant="contained"
-        >
+        </StyledBtn>
+        <PageNumber>Pagina - {currentPage}</PageNumber>
+        <StyledBtn onClick={nextHandler} variant="contained">
           Siguiente
-        </Button>
-      </ButtonGroup>
+        </StyledBtn>
+      </StyledBtnGroup>
     </>
   );
 }
