@@ -40,7 +40,7 @@ export default function ProductCard({ name, value, link }) {
         borderWidth: 3,
         borderStyle: "solid",
         transition: "transform 0.5s",
-        transform: isHover ? `scale(1.1)` : null,
+        transform: isHover ? `scale(1.05)` : null,
         display: "flex",
         flexFlow: "column nowrap",
         justifyContent: "space-around",

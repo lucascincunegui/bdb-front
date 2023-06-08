@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, ButtonGroup, Grid } from "@material-ui/core";
-import { green } from "../ui/colors";
+import { green, yellow } from "../ui/colors";
 import ProductCard from "../components/card";
 
 export default function Lista({ products }) {
@@ -25,7 +25,7 @@ export default function Lista({ products }) {
 
     const firstIndex = nextPage * itemsPerPage;
 
-    if (firstIndex === totalItems) return;
+    if (firstIndex >= totalItems) return;
 
     setItems([...products].splice(firstIndex, itemsPerPage));
     setCurrentPage(nextPage);
@@ -51,10 +51,10 @@ export default function Lista({ products }) {
     <>
       <Grid style={{ minHeight: 1500 }}>
         <Grid
-          style={{ padding: 30 }}
+          style={{ padding: "7%" }}
           container
           spacing={3}
-          justifyContent="center"
+          justifyContent="left"
         >
           {product}
         </Grid>
@@ -72,6 +72,15 @@ export default function Lista({ products }) {
         >
           Anterior
         </Button>
+        <h1
+          style={{
+            color: `${yellow}`,
+            fontWeight: 600,
+            margin: 10,
+          }}
+        >
+          Pagina - {currentPage}
+        </h1>
         <Button
           onClick={nextHandler}
           style={{
