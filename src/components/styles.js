@@ -86,7 +86,7 @@ export const ItemCard = styled(Card)`
     flex-flow: column nowrap;
     justify-content: space-around;
     :hover {
-      transform: scale(1.05);
+      transform: scale(1.01);
     }
   }
 `;

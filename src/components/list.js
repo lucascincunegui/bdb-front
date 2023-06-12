@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import { Grid } from "@material-ui/core";
 import ProductCard from "../components/card";
 import { ItemsGrid, StyledBtn, PageNumber, StyledBtnGroup } from "./styles";
 
 export default function Lista({ products }) {
-  const itemsPerPage = 9;
+  const itemsPerPage = 8;
   const [items, setItems] = useState([...products].splice(0, itemsPerPage));
   const [currentPage, setCurrentPage] = useState(0);
 
-  const product = products.map((product, index) => (
+  const product = items.map((product, index) => (
     <ProductCard
       key={index}
       name={product.nombre}
@@ -46,14 +45,12 @@ export default function Lista({ products }) {
 
     window.scrollTo({ top: 300, behavior: "smooth" });
   };
-
+  console.log(products);
   return (
     <>
-      <Grid style={{ minHeight: 1500 }}>
-        <ItemsGrid container spacing={3}>
-          {product}
-        </ItemsGrid>
-      </Grid>
+      <ItemsGrid container spacing={3}>
+        {product}
+      </ItemsGrid>
       <StyledBtnGroup orientation="horizontal">
         <StyledBtn onClick={prevHandler} variant="contained">
           Anterior
