@@ -84,9 +84,9 @@ export const ItemCard = styled(Card)`
     margin: 10px;
     box-sizing: border-box;
     border-color: ${yellow};
-    border-width: 3;
+    border-width: 1px;
     border-style: solid;
-    transition: transform 0.5s;
+    transition: transform 0.3s;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-around;

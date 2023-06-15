@@ -23,6 +23,12 @@ export const Header = styled.div`
   justify-content: space-around;
 `;
 
+export const Imagem = styled.img`
+  border-color: rgb(254, 210, 39);
+  border-width: 0.5px;
+  border-style: solid;
+`;
+
 export const SubHeader = styled.div`
   display: flex;
   flex-direction: column;
