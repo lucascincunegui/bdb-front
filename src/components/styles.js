@@ -44,6 +44,10 @@ export const ItemsGrid = styled(Grid)`
 export const StyledBtnGroup = styled(ButtonGroup)`
   && {
     padding-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: space-around;
   }
 `;
 
@@ -52,15 +56,16 @@ export const StyledBtn = styled(Button)`
     background-color: ${yellow};
     color: ${green};
     font-weight: 600;
-    margin: 20px;
+    margin: 15px;
+    font-size: 20px;
   }
 `;
 
 export const PageNumber = styled.h1`
-  color: ${yellow};
-  font-weight: 600px;
-  padding: 10px;
   background-color: ${green};
+  color: ${yellow};
+  font-weight: 600;
+  margin: 10px;
 `;
 
 //Card
