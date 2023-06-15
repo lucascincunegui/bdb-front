@@ -58,13 +58,19 @@ export default function Lista({ products }) {
         {product}
       </ItemsGrid>
       <StyledBtnGroup orientation="horizontal">
-        <StyledBtn onClick={prevHandler} variant="contained">
-          Anterior
-        </StyledBtn>
-        <PageNumber>Pagina - {currentPage}</PageNumber>
-        <StyledBtn onClick={nextHandler} variant="contained">
-          Siguiente
-        </StyledBtn>
+        {currentPage !== 0 ? (
+          <StyledBtn onClick={prevHandler} variant="contained">
+            {currentPage - 1}
+          </StyledBtn>
+        ) : null}
+
+        <PageNumber>{currentPage}</PageNumber>
+
+        {currentPage < items.length ? (
+          <StyledBtn onClick={nextHandler} variant="contained">
+            {currentPage + 1}
+          </StyledBtn>
+        ) : null}
       </StyledBtnGroup>
     </>
   );
