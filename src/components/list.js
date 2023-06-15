@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProductCard from "../components/card";
 import { ItemsGrid, StyledBtn, PageNumber, StyledBtnGroup } from "./styles";
 
 export default function Lista({ products }) {
   const itemsPerPage = 8;
-  const [items, setItems] = useState([...products].splice(0, itemsPerPage));
+  const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
+
+  const setLista = () => {
+    setItems([...products].splice(0, itemsPerPage));
+  };
+
+  useEffect(setLista, []);
 
   const product = items.map((product, index) => (
     <ProductCard
@@ -45,7 +51,7 @@ export default function Lista({ products }) {
 
     window.scrollTo({ top: 300, behavior: "smooth" });
   };
-  console.log(products);
+
   return (
     <>
       <ItemsGrid container spacing={3}>
