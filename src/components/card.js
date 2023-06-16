@@ -1,63 +1,33 @@
 import React from "react";
+import { CardContent, Divider } from "@material-ui/core";
 import {
-  Button,
-  Card,
-  CardContent,
-  CardMedia,
-  Divider,
-  Typography,
-} from "@material-ui/core";
-import { green, yellow } from "../ui/colors";
+  CardContainer,
+  DescriptionBtn,
+  ItemCard,
+  ItemMedia,
+  ItemName,
+  ItemValue,
+} from "./styles";
 
-export default function ProductCard({ name, value, image }) {
+export default function ProductCard({ name, value, link }) {
+  const formatedValue = value.toLocaleString("pt-br", {
+    style: "currency",
+    currency: "BRL",
+  });
+
   return (
-    <Card
-      style={{
-        textAlign: "center",
-        minWidth: "300px",
-        margin: "30px",
-        boxSizing: "border-box",
-        borderColor: yellow,
-        borderWidth: 3,
-        borderStyle: "solid",
-      }}
-    >
-      <CardMedia style={{ minHeight: 300 }} alt="image" image={image} />
+    <ItemCard elevation={3}>
+      <CardContainer>
+        <ItemMedia alt={"image " + name} image={link} />
+      </CardContainer>
       <Divider />
-      <CardContent
-        style={{
-          borderRadius: 5,
-        }}
-      >
-        <Typography
-          style={{
-            textAlign: "left",
-            fontWeight: "bold",
-            fontSize: 25,
-          }}
-        >
-          {name}
-        </Typography>
-      </CardContent>
-      <Typography
-        style={{ textAlign: "right", fontWeight: "bold", fontSize: 30 }}
-      >
-        {value}
-      </Typography>
       <CardContent>
-        <Button
-          style={{
-            textAlign: "center",
-            fontWeight: "bold",
-            fontSize: 15,
-            backgroundColor: "#fed227",
-            color: `${green}`,
-            fontWeight: 600,
-          }}
-        >
-          Ver descrição
-        </Button>
+        <ItemValue>{formatedValue}</ItemValue>
+        <ItemName>{name}</ItemName>
       </CardContent>
-    </Card>
+      <CardContent>
+        <DescriptionBtn>Ver descrição</DescriptionBtn>
+      </CardContent>
+    </ItemCard>
   );
 }

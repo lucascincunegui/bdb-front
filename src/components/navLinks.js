@@ -1,37 +1,15 @@
-import { Button } from "@material-ui/core";
 import React from "react";
-import { green } from "../ui/colors";
-import { NavLinksDiv } from "./constants";
-import { StyledLink } from "./styles";
+import { NavLinksDiv } from "./styles";
+import { LinkBtn, StyledLink } from "./styles";
 
 export default function NavLinks() {
   return (
     <NavLinksDiv>
-      <StyledLink exact to="/">
-        <Button
-          style={{
-            backgroundColor: "#fed227",
-            color: `${green}`,
-            fontWeight: 600,
-            marginRight: 20,
-          }}
-          variant="contained"
-        >
-          Inicio
-        </Button>
+      <StyledLink exact="true" to="/">
+        <LinkBtn variant="contained">Inicio</LinkBtn>
       </StyledLink>
-      <StyledLink exact to="/produtos">
-        <Button
-          style={{
-            backgroundColor: "#fed227",
-            color: `${green}`,
-            fontWeight: 600,
-            marginRight: 20,
-          }}
-          variant="contained"
-        >
-          Produtos
-        </Button>
+      <StyledLink exact="true" to="/produtos">
+        <LinkBtn variant="contained">Produtos</LinkBtn>
       </StyledLink>
     </NavLinksDiv>
   );

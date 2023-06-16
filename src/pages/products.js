@@ -1,151 +1,51 @@
-import React, { useState } from "react";
-import { DivProducts } from "./styles";
+import React, { useEffect, useState } from "react";
+import { InputFilter, ProductsPaper } from "./styles";
 import Lista from "../components/list";
-import { Paper } from "@material-ui/core";
-const productsArray = [
-  {
-    image: "/assets/racoes/golden.jpeg",
-    value: "R$ 122,00",
-    name: "Golden",
-  },
-
-  {
-    image: "/assets/racoes/sapeca.jpeg",
-    value: "R$ 100,00",
-    name: "Sapeca",
-  },
-
-  {
-    image: "/assets/racoes/pastel dog.jpeg",
-    value: "R$ 140,00",
-    name: "Pastel Dog",
-  },
-
-  {
-    image: "/assets/racoes/premier.jpeg",
-    value: "R$ 140,00",
-    name: "Premier",
-  },
-  {
-    image: "/assets/racoes/golden.jpeg",
-    value: "R$ 122,00",
-    name: "Golden",
-  },
-
-  {
-    image: "/assets/racoes/sapeca.jpeg",
-    value: "R$ 100,00",
-    name: "Sapeca",
-  },
-
-  {
-    image: "/assets/racoes/pastel dog.jpeg",
-    value: "R$ 140,00",
-    name: "Pastel Dog",
-  },
-
-  {
-    image: "/assets/racoes/premier.jpeg",
-    value: "R$ 140,00",
-    name: "Premier",
-  },
-  {
-    image: "/assets/racoes/golden.jpeg",
-    value: "R$ 122,00",
-    name: "Golden",
-  },
-
-  {
-    image: "/assets/racoes/sapeca.jpeg",
-    value: "R$ 100,00",
-    name: "Sapeca",
-  },
-
-  {
-    image: "/assets/racoes/pastel dog.jpeg",
-    value: "R$ 140,00",
-    name: "Pastel Dog",
-  },
-
-  {
-    image: "/assets/racoes/premier.jpeg",
-    value: "R$ 140,00",
-    name: "Premier",
-  },
-  {
-    image: "/assets/racoes/golden.jpeg",
-    value: "R$ 122,00",
-    name: "Golden",
-  },
-
-  {
-    image: "/assets/racoes/sapeca.jpeg",
-    value: "R$ 100,00",
-    name: "Sapeca",
-  },
-
-  {
-    image: "/assets/racoes/pastel dog.jpeg",
-    value: "R$ 140,00",
-    name: "Pastel Dog",
-  },
-
-  {
-    image: "/assets/racoes/premier.jpeg",
-    value: "R$ 140,00",
-    name: "Premier",
-  },
-];
-
-const itemsPerPage = 9;
+import axios from "axios";
 
 export default function Products() {
-  const [datosFromApi, setDatosFromApi] = useState(productsArray);
-  console.log(productsArray);
-  const [items, setItems] = useState(
-    [...productsArray].splice(0, itemsPerPage)
-  );
+  const [busqueda, setBusqueda] = useState([]);
+  const [product, setProduct] = useState([]);
+  const [products, setProducts] = useState([]);
 
-  const [currentPage, setCurrentPage] = useState(0);
-
-  //BOTON SIGUIENTE
-  const nextHandler = () => {
-    const totalItems = datosFromApi.length;
-
-    const nextPage = currentPage + 1;
-
-    const firstIndex = nextPage * itemsPerPage;
-
-    if (firstIndex === totalItems) return;
-
-    setItems([...datosFromApi].splice(firstIndex, itemsPerPage));
-    setCurrentPage(nextPage);
-
-    window.scrollTo({ top: 300, behavior: "smooth" });
+  const loadData = () => {
+    axios.get("http://localhost:4000/Productos").then((result) => {
+      setProduct(result.data);
+      setProducts(result.data);
+    });
   };
 
-  //BOTON ANTERIOR
-  const prevHandler = () => {
-    const prevPage = currentPage - 1;
+  useEffect(loadData, []);
 
-    if (prevPage < 0) return;
-    const firstIndex = prevPage * itemsPerPage;
-    setItems([...datosFromApi].splice(firstIndex, itemsPerPage));
-    setCurrentPage(prevPage);
+  //FILTRAR PRODUCTOS
+  const handleChange = (e) => {
+    setBusqueda(e.target.value);
+    filtrar(e.target.value);
+  };
 
-    window.scrollTo({ top: 300, behavior: "smooth" });
+  const filtrar = (terminoBusqueda) => {
+    var resultadosBusqueda = product.filter((elemento) => {
+      if (
+        elemento.nombre
+          .toString()
+          .toLowerCase()
+          .includes(terminoBusqueda.toLowerCase())
+      ) {
+        return elemento;
+      }
+    });
+    setProducts(resultadosBusqueda);
   };
 
   return (
-    <Paper elevation={3}>
-      <DivProducts>
-        <Lista
-          currentPage={currentPage}
-          items={items}
-          nextHandler={nextHandler}
-          prevHandler={prevHandler}
-        />
-      </DivProducts>
-    </Paper>
+    <ProductsPaper>
+      <InputFilter
+        onChange={handleChange}
+        value={busqueda}
+        placeholder="Búsqueda por Nome"
+      />
+
+      <Lista products={products} />
+    </ProductsPaper>
   );
 }

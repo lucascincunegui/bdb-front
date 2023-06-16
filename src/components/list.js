@@ -1,109 +1,77 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProductCard from "../components/card";
+import { ItemsGrid, StyledBtn, PageNumber, StyledBtnGroup } from "./styles";
 
-export default function Lista() {
-  const productsArray = [
-    {
-      image: "/assets/racoes/golden.jpeg",
-      value: "R$ 122,00",
-      name: "Golden",
-    },
+export default function Lista({ products }) {
+  const itemsPerPage = 8;
+  const [items, setItems] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
 
-    {
-      image: "/assets/racoes/sapeca.jpeg",
-      value: "R$ 100,00",
-      name: "Sapeca",
-    },
+  const setLista = () => {
+    setItems([...products].splice(0, itemsPerPage));
+  };
 
-    {
-      image: "/assets/racoes/pastel dog.jpeg",
-      value: "R$ 140,00",
-      name: "Pastel Dog",
-    },
+  useEffect(setLista, [products]);
 
-    {
-      image: "/assets/racoes/premier.jpeg",
-      value: "R$ 140,00",
-      name: "Premier",
-    },
-    {
-      image: "/assets/racoes/golden.jpeg",
-      value: "R$ 122,00",
-      name: "Golden",
-    },
+  const product = items.map((product, index) => (
+    <ProductCard
+      key={index}
+      name={product.nombre}
+      value={product.valor}
+      link={product.link}
+    />
+  ));
 
-    {
-      image: "/assets/racoes/sapeca.jpeg",
-      value: "R$ 100,00",
-      name: "Sapeca",
-    },
+  //BOTON SIGUIENTE
+  const nextHandler = () => {
+    const totalItems = products.length;
 
-    {
-      image: "/assets/racoes/pastel dog.jpeg",
-      value: "R$ 140,00",
-      name: "Pastel Dog",
-    },
+    const nextPage = currentPage + 1;
 
-    {
-      image: "/assets/racoes/premier.jpeg",
-      value: "R$ 140,00",
-      name: "Premier",
-    },
-    {
-      image: "/assets/racoes/golden.jpeg",
-      value: "R$ 122,00",
-      name: "Golden",
-    },
+    const firstIndex = nextPage * itemsPerPage;
 
-    {
-      image: "/assets/racoes/sapeca.jpeg",
-      value: "R$ 100,00",
-      name: "Sapeca",
-    },
+    if (firstIndex >= totalItems) return;
 
-    {
-      image: "/assets/racoes/pastel dog.jpeg",
-      value: "R$ 140,00",
-      name: "Pastel Dog",
-    },
+    setItems([...products].splice(firstIndex, itemsPerPage));
+    setCurrentPage(nextPage);
 
-    {
-      image: "/assets/racoes/premier.jpeg",
-      value: "R$ 140,00",
-      name: "Premier",
-    },
-    {
-      image: "/assets/racoes/golden.jpeg",
-      value: "R$ 122,00",
-      name: "Golden",
-    },
+    window.scrollTo({ top: 300, behavior: "smooth" });
+  };
 
-    {
-      image: "/assets/racoes/sapeca.jpeg",
-      value: "R$ 100,00",
-      name: "Sapeca",
-    },
+  //BOTON ANTERIOR
+  const prevHandler = () => {
+    const prevPage = currentPage - 1;
 
-    {
-      image: "/assets/racoes/pastel dog.jpeg",
-      value: "R$ 140,00",
-      name: "Pastel Dog",
-    },
+    if (prevPage < 0) return;
 
-    {
-      image: "/assets/racoes/premier.jpeg",
-      value: "R$ 140,00",
-      name: "Premier",
-    },
-  ];
+    const firstIndex = prevPage * itemsPerPage;
+
+    setItems([...products].splice(firstIndex, itemsPerPage));
+    setCurrentPage(prevPage);
+
+    window.scrollTo({ top: 300, behavior: "smooth" });
+  };
 
   return (
-    <Grid style={{ padding: 30 }} container spacing={3} justifyContent="center">
-      {productsArray.map((card, index) => {
-        return (
-          <ProductCard name={card.name} value={card.value} image={card.image} />
-        );
-      })}
-    </Grid>
+    <>
+      <ItemsGrid container spacing={3}>
+        {product}
+      </ItemsGrid>
+      <StyledBtnGroup orientation="horizontal">
+        {currentPage !== 0 ? (
+          <StyledBtn onClick={prevHandler} variant="contained">
+            {currentPage - 1}
+          </StyledBtn>
+        ) : null}
+
+        <PageNumber>{currentPage}</PageNumber>
+
+        {currentPage < items.length ? (
+          <StyledBtn onClick={nextHandler} variant="contained">
+            {currentPage + 1}
+          </StyledBtn>
+        ) : null}
+      </StyledBtnGroup>
+    </>
   );
 }
