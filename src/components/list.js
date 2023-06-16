@@ -11,7 +11,7 @@ export default function Lista({ products }) {
     setItems([...products].splice(0, itemsPerPage));
   };
 
-  useEffect(setLista, []);
+  useEffect(setLista, [products]);
 
   const product = items.map((product, index) => (
     <ProductCard
