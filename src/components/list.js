@@ -5,8 +5,9 @@ import { ItemsGrid, StyledBtn, PageNumber, StyledBtnGroup } from "./styles";
 export default function Lista({ products }) {
   const itemsPerPage = 8;
   const [items, setItems] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = products.length / itemsPerPage;
+  console.log(products.length);
   const setLista = () => {
     setItems([...products].splice(0, itemsPerPage));
   };
@@ -42,7 +43,7 @@ export default function Lista({ products }) {
   const prevHandler = () => {
     const prevPage = currentPage - 1;
 
-    if (prevPage < 0) return;
+    if (prevPage < 1) return;
 
     const firstIndex = prevPage * itemsPerPage;
 
@@ -58,17 +59,19 @@ export default function Lista({ products }) {
         {product}
       </ItemsGrid>
       <StyledBtnGroup orientation="horizontal">
-        {currentPage !== 0 ? (
+        {currentPage !== 1 ? (
           <StyledBtn onClick={prevHandler} variant="contained">
-            {currentPage - 1}
+            Anterior
           </StyledBtn>
         ) : null}
 
-        <PageNumber>{currentPage}</PageNumber>
+        <PageNumber>
+          {currentPage} de {totalPages}
+        </PageNumber>
 
-        {currentPage < items.length ? (
+        {currentPage < totalPages && currentPage !== totalPages ? (
           <StyledBtn onClick={nextHandler} variant="contained">
-            {currentPage + 1}
+            Seguinte
           </StyledBtn>
         ) : null}
       </StyledBtnGroup>
