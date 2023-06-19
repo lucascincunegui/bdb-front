@@ -76,7 +76,7 @@ export default function Lista({ products }) {
   console.log("PRODUCTS => " + products.length);
   return (
     <WrapperGrid>
-      <ItemsGrid container spacing={3}>
+      <ItemsGrid container>
         {loading ? <ProgressCircular size={60} /> : <>{product}</>}
       </ItemsGrid>
       <StyledBtnGroup orientation="horizontal">
