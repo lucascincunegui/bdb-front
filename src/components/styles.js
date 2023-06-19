@@ -37,6 +37,17 @@ export const LinkBtn = styled(Button)`
 export const ProgressCircular = styled(CircularProgress)`
   && {
     color: ${yellow};
+    display: flex;
+    justify-content: center;
+  }
+`;
+
+export const WrapperGrid = styled(Grid)`
+  && {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
   }
 `;
 
@@ -75,6 +86,8 @@ export const PageNumber = styled.h1`
   color: ${yellow};
   font-weight: 600;
   margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
 `;
 
 //Card
