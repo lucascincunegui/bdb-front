@@ -25,7 +25,9 @@ export default function Lista({ products }) {
 
   const Loader = () => {
     setLoading(true);
+
     window.scrollTo({ top: 260 });
+
     setToggleDisabled(true);
 
     setTimeout(() => {
