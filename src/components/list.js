@@ -6,14 +6,17 @@ import {
   PageNumber,
   StyledBtnGroup,
   ProgressCircular,
+  WrapperGrid,
 } from "./styles";
 
 export default function Lista({ products }) {
   const itemsPerPage = 8;
   const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
-  const totalPages = products.length / itemsPerPage;
+  const totalPages = Math.ceil(products.length / itemsPerPage);
   const [loading, setLoading] = useState(false);
+  const [toggleDisabled, setToggleDisabled] = useState();
+
   const setLista = () => {
     setItems([...products].splice(0, itemsPerPage));
   };
@@ -22,9 +25,13 @@ export default function Lista({ products }) {
 
   const Loader = () => {
     setLoading(true);
+    window.scrollTo({ top: 260 });
+    setToggleDisabled(true);
+
     setTimeout(() => {
+      setToggleDisabled(false);
       setLoading(false);
-    }, 2000);
+    }, 1000);
   };
 
   useEffect(Loader, []);
@@ -68,13 +75,17 @@ export default function Lista({ products }) {
   console.log("CURRENT => " + currentPage);
   console.log("PRODUCTS => " + products.length);
   return (
-    <>
+    <WrapperGrid>
       <ItemsGrid container spacing={3}>
         {loading ? <ProgressCircular size={60} /> : <>{product}</>}
       </ItemsGrid>
       <StyledBtnGroup orientation="horizontal">
         {currentPage !== 0 ? (
-          <StyledBtn onClick={prevHandler} variant="contained">
+          <StyledBtn
+            disabled={toggleDisabled}
+            onClick={prevHandler}
+            variant="contained"
+          >
             Anterior
           </StyledBtn>
         ) : null}
@@ -84,11 +95,15 @@ export default function Lista({ products }) {
         </PageNumber>
 
         {currentPage <= totalPages ? (
-          <StyledBtn onClick={nextHandler} variant="contained">
+          <StyledBtn
+            disabled={toggleDisabled}
+            onClick={nextHandler}
+            variant="contained"
+          >
             Seguinte
           </StyledBtn>
         ) : null}
       </StyledBtnGroup>
-    </>
+    </WrapperGrid>
   );
 }
