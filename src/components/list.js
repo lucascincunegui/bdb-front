@@ -1,18 +1,33 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "../components/card";
-import { ItemsGrid, StyledBtn, PageNumber, StyledBtnGroup } from "./styles";
+import {
+  ItemsGrid,
+  StyledBtn,
+  PageNumber,
+  StyledBtnGroup,
+  ProgressCircular,
+} from "./styles";
 
 export default function Lista({ products }) {
   const itemsPerPage = 8;
   const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const totalPages = products.length / itemsPerPage;
-  //NO PASA A LA ULTIMA PAGINA
+  const [loading, setLoading] = useState(false);
   const setLista = () => {
     setItems([...products].splice(0, itemsPerPage));
   };
 
   useEffect(setLista, [products]);
+
+  const Loader = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  };
+
+  useEffect(Loader, []);
 
   const product = items.map((product, index) => (
     <ProductCard
@@ -32,11 +47,9 @@ export default function Lista({ products }) {
     const firstIndex = nextPage * itemsPerPage;
 
     if (firstIndex >= totalItems) return;
-
+    Loader();
     setItems([...products].splice(firstIndex, itemsPerPage));
     setCurrentPage(nextPage);
-
-    window.scrollTo({ top: 300, behavior: "smooth" });
   };
 
   //BOTON ANTERIOR
@@ -46,11 +59,9 @@ export default function Lista({ products }) {
     if (prevPage < 0) return;
 
     const firstIndex = prevPage * itemsPerPage;
-
+    Loader();
     setItems([...products].splice(firstIndex, itemsPerPage));
     setCurrentPage(prevPage);
-
-    window.scrollTo({ top: 300, behavior: "smooth" });
   };
 
   console.log("TOTAL => " + totalPages);
@@ -59,7 +70,7 @@ export default function Lista({ products }) {
   return (
     <>
       <ItemsGrid container spacing={3}>
-        {product}
+        {loading ? <ProgressCircular size={60} /> : <>{product}</>}
       </ItemsGrid>
       <StyledBtnGroup orientation="horizontal">
         {currentPage !== 0 ? (

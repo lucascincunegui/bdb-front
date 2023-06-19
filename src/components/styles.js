@@ -5,6 +5,7 @@ import {
   Card,
   Typography,
   CardMedia,
+  CircularProgress,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -33,8 +34,16 @@ export const LinkBtn = styled(Button)`
 
 //List
 
+export const ProgressCircular = styled(CircularProgress)`
+  && {
+    color: ${yellow};
+  }
+`;
+
 export const ItemsGrid = styled(Grid)`
   && {
+    margin-top: 50px;
+    margin-bottom: 50px;
     padding: 50px;
     display: flex;
     justify-content: center;
