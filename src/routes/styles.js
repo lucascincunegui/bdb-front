@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { green, yellow } from "../ui/colors";
+import { bgPage, green, yellow } from "../ui/colors";
 import { Typography } from "@material-ui/core";
 
 export const Title = styled(Typography)`
@@ -12,7 +12,7 @@ export const Title = styled(Typography)`
 
 export const Wrapper = styled.div`
   min-height: 800px;
-  background-color: rgba(254, 210, 39, 0.1);
+  background-color: ${bgPage};
 `;
 
 export const Header = styled.div`
