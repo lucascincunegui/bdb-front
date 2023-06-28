@@ -10,8 +10,11 @@ export default function Products() {
 
   const loadData = () => {
     axios.get("http://localhost:4000/Productos").then((result) => {
-      setProduct(result.data);
-      setProducts(result.data);
+      const order = result.data.sort((a, b) =>
+        a.nombre.localeCompare(b.nombre)
+      );
+      setProduct(order);
+      setProducts(order);
     });
   };
 
@@ -44,7 +47,6 @@ export default function Products() {
         value={busqueda}
         placeholder="Búsqueda por Nome"
       />
-
       <Lista products={products} />
     </ProductsPaper>
   );
