@@ -20,7 +20,7 @@ export default function MyRoutes() {
             <Imagem
               alt="Sejam Bem-Vindos. Aberto até as 21hs"
               width={450}
-              src="https://scontent.fmvd1-1.fna.fbcdn.net/v/t39.30808-6/294510978_468806668589713_700820825244798186_n.png?stp=dst-png_s960x960&_nc_cat=108&ccb=1-7&_nc_sid=e3f864&_nc_eui2=AeGN-jcWXv_5QmzW5TRuSdoBa_TtwiC-W9hr9O3CIL5b2IK1iL2pbKPeQ28jfoD7Zak3H4Mfg7wlkmnnymzrjH1l&_nc_ohc=usfk3K3HozQAX8o_VsN&_nc_ht=scontent.fmvd1-1.fna&oh=00_AfCgJnGxFvaC7le7SlYCGUGdfJcY-bHCwv_m6zQmfialxw&oe=6490D574"
+              src="https://scontent.fmvd3-1.fna.fbcdn.net/v/t39.30808-6/294510978_468806668589713_700820825244798186_n.png?_nc_cat=108&ccb=1-7&_nc_sid=e3f864&_nc_ohc=zAWE3GsZ7QoAX_vMe1_&_nc_ht=scontent.fmvd3-1.fna&oh=00_AfCDVpafBFPkKR52WU8iXKVm-I2P_hv-dXEwn0QESDQQTg&oe=64A0A774"
             />
           </Header>
         </Paper>
