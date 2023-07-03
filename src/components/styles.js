@@ -53,8 +53,6 @@ export const WrapperGrid = styled(Grid)`
 
 export const ItemsGrid = styled(Grid)`
   && {
-    margin-top: 50px;
-    margin-bottom: 50px;
     padding: 50px;
     display: flex;
     justify-content: center;

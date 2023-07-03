@@ -15,7 +15,7 @@ export default function Lista({ products }) {
   const [currentPage, setCurrentPage] = useState(0);
   const totalPages = Math.ceil(products.length / itemsPerPage);
   const [loading, setLoading] = useState(false);
-  const [toggleDisabled, setToggleDisabled] = useState();
+  const [disabled, setDisabled] = useState();
 
   const setLista = () => {
     setItems([...products].splice(0, itemsPerPage));
@@ -26,12 +26,12 @@ export default function Lista({ products }) {
   const Loader = () => {
     setLoading(true);
 
-    window.scrollTo({ top: 260 });
+    window.scrollTo({ top: 0 });
 
-    setToggleDisabled(true);
+    setDisabled(true);
 
     setTimeout(() => {
-      setToggleDisabled(false);
+      setDisabled(false);
       setLoading(false);
     }, 1000);
   };
@@ -73,9 +73,6 @@ export default function Lista({ products }) {
     setCurrentPage(prevPage);
   };
 
-  console.log("TOTAL => " + totalPages);
-  console.log("CURRENT => " + currentPage);
-  console.log("PRODUCTS => " + products.length);
   return (
     <WrapperGrid>
       <ItemsGrid container>
@@ -84,7 +81,7 @@ export default function Lista({ products }) {
       <StyledBtnGroup orientation="horizontal">
         {currentPage !== 0 ? (
           <StyledBtn
-            disabled={toggleDisabled}
+            disabled={disabled}
             onClick={prevHandler}
             variant="contained"
           >
@@ -98,7 +95,7 @@ export default function Lista({ products }) {
 
         {currentPage <= totalPages ? (
           <StyledBtn
-            disabled={toggleDisabled}
+            disabled={disabled}
             onClick={nextHandler}
             variant="contained"
           >

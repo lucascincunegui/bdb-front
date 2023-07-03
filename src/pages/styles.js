@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { green, lightGray, black, yellow, bgPage } from "../ui/colors";
-import { Grid, Paper, Typography } from "@material-ui/core";
+import { Button, Grid, Paper, Typography } from "@material-ui/core";
 
 //Home
 
@@ -92,12 +92,61 @@ export const ProductsPaper = styled(Paper)`
   }
 `;
 
+export const ListGrid = styled(Grid)`
+  && {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+  }
+`;
+
+export const FilterPaper = styled(Grid)`
+  && {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: ${bgPage};
+  }
+`;
+
+export const InputDiv = styled(Grid)`
+  && {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+  }
+`;
+
+export const BtnsDiv = styled(Grid)`
+  && {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    flex-direction: row;
+  }
+`;
+
+export const StyledBtn2 = styled(Button)`
+  && {
+    background-color: ${yellow};
+    color: ${green};
+    font-weight: 600;
+    margin: 10px;
+    :hover {
+      background-color: ${green};
+      color: ${yellow};
+    }
+  }
+`;
+
 export const InputFilter = styled.input`
-  margin-top: 30px;
   padding: 10px;
   border-radius: 4px;
-  border: 5px solid ${yellow};
-  font-weight: 600;
+  width: 350px;
+  border: none;
 `;
 
 //Text
