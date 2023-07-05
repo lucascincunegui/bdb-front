@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   InputDiv,
-  InputFilter,
   ProductsPaper,
   BtnsDiv,
   StyledBtn2,
@@ -11,7 +10,9 @@ import {
 import Lista from "../components/list";
 import axios from "axios";
 import { ProgressCircular } from "../components/styles";
-import { Divider } from "@material-ui/core";
+import { Divider, InputAdornment, TextField } from "@material-ui/core";
+import { green } from "../ui/colors";
+import SearchIcon from "@mui/icons-material/Search";
 
 export default function Products() {
   const [busqueda, setBusqueda] = useState([]);
@@ -87,10 +88,20 @@ export default function Products() {
     <ProductsPaper>
       <FilterPaper>
         <InputDiv>
-          <InputFilter
-            onChange={handleChange}
+          <TextField
             value={busqueda}
-            placeholder="Buscar produtos, marcas e muito mais…"
+            onChange={handleChange}
+            fullWidth
+            color="secondary"
+            id="Buscar produtos"
+            label="Buscar produtos..."
+            InputProps={{
+              endAdornment: (
+                <InputAdornment>
+                  <SearchIcon sx={{ color: green, mr: 1, my: 0.5 }} />
+                </InputAdornment>
+              ),
+            }}
           />
         </InputDiv>
         <BtnsDiv>

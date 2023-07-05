@@ -114,6 +114,7 @@ export const InputDiv = styled(Grid)`
   && {
     display: flex;
     flex-direction: row;
+    align-items: flex-end;
     padding: 10px;
   }
 `;
@@ -140,13 +141,6 @@ export const StyledBtn2 = styled(Button)`
       color: ${yellow};
     }
   }
-`;
-
-export const InputFilter = styled.input`
-  padding: 10px;
-  border-radius: 4px;
-  width: 350px;
-  border: none;
 `;
 
 //Text
