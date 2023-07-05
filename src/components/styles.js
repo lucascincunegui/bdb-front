@@ -106,12 +106,11 @@ export const ItemCard = styled(Card)`
     border-color: ${yellow};
     border-width: 1px;
     border-style: solid;
-    transition: transform 0.3s;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-around;
     :hover {
-      transform: scale(1.01);
+      box-shadow: 0px 0px 10px 0px gray;
     }
   }
 `;
