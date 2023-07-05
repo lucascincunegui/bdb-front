@@ -4,7 +4,7 @@ import { Typography } from "@material-ui/core";
 
 export const Title = styled(Typography)`
   && {
-    font-size: 60px;
+    font-size: 30px;
     font-weight: bold;
     color: ${yellow};
   }
@@ -20,19 +20,8 @@ export const Header = styled.div`
   flex-direction: row;
   background-color: ${green};
   align-items: center;
-  justify-content: space-around;
-`;
-
-export const Imagem = styled.img`
-  border-color: rgb(254, 210, 39);
-  border-width: 0.5px;
-  border-style: solid;
-`;
-
-export const SubHeader = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: left;
+  justify-content: space-between;
+  padding: 10px;
 `;
 
 export const Footer = styled.div`
