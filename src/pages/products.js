@@ -94,10 +94,12 @@ export default function Products() {
             fullWidth
             color="secondary"
             id="Buscar produtos"
-            label="Buscar produtos..."
+            variant="outlined"
+            placeholder="Buscar produtos..."
+            autoComplete="off"
             InputProps={{
               endAdornment: (
-                <InputAdornment>
+                <InputAdornment position="end">
                   <SearchIcon sx={{ color: green, mr: 1, my: 0.5 }} />
                 </InputAdornment>
               ),
