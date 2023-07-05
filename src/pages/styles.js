@@ -154,8 +154,10 @@ export const StyledBtn2 = styled(Button)`
   && {
     background-color: ${yellow};
     color: ${green};
-    font-weight: 600;
+    font-size: small;
     margin: 10px;
+    padding: 5px;
+    width: 120px;
     :hover {
       background-color: ${green};
       color: ${yellow};

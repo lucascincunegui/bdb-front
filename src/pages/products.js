@@ -20,6 +20,8 @@ export default function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState();
+  const [selectedMajor, setSelectedMajor] = useState(true);
+  const [selectedMinor, setSelectedMinor] = useState(true);
 
   const loadData = () => {
     axios.get("http://localhost:4000/Productos").then((result) => {
@@ -57,6 +59,9 @@ export default function Products() {
   const majorToMinor = () => {
     Loader();
 
+    setSelectedMajor(false);
+    setSelectedMinor(true);
+
     const priceFilter = products.sort((a, b) => b.valor - a.valor);
     setProducts(priceFilter);
   };
@@ -64,6 +69,9 @@ export default function Products() {
   //ORDENA DE MENOR A MAYOR PREÇO
   const minorToMajor = () => {
     Loader();
+
+    setSelectedMinor(false);
+    setSelectedMajor(true);
 
     const priceFilter = products.sort((a, b) => a.valor - b.valor);
     setProducts(priceFilter);
@@ -107,14 +115,29 @@ export default function Products() {
           />
         </InputDiv>
         <BtnsDiv>
-          <span style={{ fontWeight: 500 }}>Ordenar por</span>
-          <StyledBtn2 disabled={disabled} onClick={minorToMajor}>
-            Menor preço
-          </StyledBtn2>
-          -
-          <StyledBtn2 disabled={disabled} onClick={majorToMinor}>
-            Maior preço
-          </StyledBtn2>
+          <span style={{ fontWeight: 500, marginRight: 10 }}>Ordenar por</span>
+          {selectedMinor ? (
+            <>
+              <StyledBtn2
+                size="small"
+                disabled={disabled}
+                onClick={minorToMajor}
+              >
+                Menor preço
+              </StyledBtn2>
+            </>
+          ) : null}
+          {selectedMajor ? (
+            <>
+              <StyledBtn2
+                size="small"
+                disabled={disabled}
+                onClick={majorToMinor}
+              >
+                Maior preço
+              </StyledBtn2>
+            </>
+          ) : null}
         </BtnsDiv>
       </FilterPaper>
       <Divider />
