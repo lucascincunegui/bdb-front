@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { green, lightGray, black, yellow, bgPage } from "../ui/colors";
-import { Button, Grid, Paper, Typography } from "@material-ui/core";
+import { Button, Grid, List, Paper, Typography } from "@material-ui/core";
+import { ListItemButton } from "@mui/material";
 
 //Home
 
@@ -119,26 +120,38 @@ export const InputDiv = styled(Paper)`
   }
 `;
 
-// const CssTextField = styled(TextField)`
-// &&{
-//   '& label.Mui-focused': {
-//     color: '#A0AAB4',
-//   },
-//   '& .MuiInput-underline:after': {
-//     borderBottomColor: '#B2BAC2',
-//   },
-//   '& .MuiOutlinedInput-root': {
-//     '& fieldset': {
-//       borderColor: '#E0E3E7',
-//     },
-//     '&:hover fieldset': {
-//       borderColor: '#B2BAC2',
-//     },
-//     '&.Mui-focused fieldset': {
-//       borderColor: '#6F7E8C',
-//     },
-//   },
-// }`;
+export const OrderItemBtn = styled(ListItemButton)`
+  && {
+    border-radius: 4px;
+    border-right: 5px;
+    :hover {
+      background: transparent;
+    }
+  }
+`;
+
+export const ItemBtn = styled(ListItemButton)`
+  && {
+    border-radius: 4px;
+    border-right: 5px;
+    :hover {
+      background: #003c2210;
+      color: ${green};
+    }
+  }
+`;
+
+export const ListOptions = styled(List)`
+  && {
+    position: absolute;
+    background-color: white;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    border-radius: 4px;
+    border-left: 1px solid #003c2250;
+  }
+`;
 
 export const BtnsDiv = styled(Grid)`
   && {
@@ -177,6 +190,10 @@ export const Title = styled.h1`
 export const Subtitle = styled.h2`
   color: ${black};
   font-weight: bold;
+`;
+
+export const Span = styled.span`
+  padding: 10px;
 `;
 
 export const Parrafo = styled.p`

@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import {
   InputDiv,
   ProductsPaper,
-  BtnsDiv,
-  StyledBtn2,
+  ItemBtn,
+  ListOptions,
+  OrderItemBtn,
+  Span,
   FilterPaper,
   ListGrid,
 } from "./styles";
@@ -13,6 +15,10 @@ import { ProgressCircular } from "../components/styles";
 import { Divider, InputAdornment, TextField } from "@material-ui/core";
 import { green } from "../ui/colors";
 import SearchIcon from "@mui/icons-material/Search";
+import List from "@mui/material/List";
+import Collapse from "@mui/material/Collapse";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
 
 export default function Products() {
   const [busqueda, setBusqueda] = useState([]);
@@ -20,8 +26,9 @@ export default function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState();
-  const [selectedMajor, setSelectedMajor] = useState(true);
-  const [selectedMinor, setSelectedMinor] = useState(true);
+  const [selectedMajor, setSelectedMajor] = useState();
+  const [selectedMinor, setSelectedMinor] = useState();
+  const [open, setOpen] = useState(false);
 
   const loadData = () => {
     axios.get("http://localhost:4000/Productos").then((result) => {
@@ -59,9 +66,10 @@ export default function Products() {
   const majorToMinor = () => {
     Loader();
 
-    setSelectedMajor(false);
-    setSelectedMinor(true);
+    setSelectedMinor(false);
+    setSelectedMajor(true);
 
+    setOpen(false);
     const priceFilter = products.sort((a, b) => b.valor - a.valor);
     setProducts(priceFilter);
   };
@@ -70,9 +78,10 @@ export default function Products() {
   const minorToMajor = () => {
     Loader();
 
-    setSelectedMinor(false);
-    setSelectedMajor(true);
+    setSelectedMajor(false);
+    setSelectedMinor(true);
 
+    setOpen(false);
     const priceFilter = products.sort((a, b) => a.valor - b.valor);
     setProducts(priceFilter);
   };
@@ -91,6 +100,10 @@ export default function Products() {
   };
 
   useEffect(Loader, []);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
 
   return (
     <ProductsPaper>
@@ -114,31 +127,42 @@ export default function Products() {
             }}
           />
         </InputDiv>
-        <BtnsDiv>
-          <span style={{ fontWeight: 500, marginRight: 10 }}>Ordenar por</span>
-          {selectedMinor ? (
-            <>
-              <StyledBtn2
-                size="small"
-                disabled={disabled}
-                onClick={minorToMajor}
-              >
-                Menor preço
-              </StyledBtn2>
-            </>
-          ) : null}
-          {selectedMajor ? (
-            <>
-              <StyledBtn2
-                size="small"
-                disabled={disabled}
+        <List
+          sx={{
+            width: "100%",
+            maxWidth: 170,
+          }}
+          component="nav"
+        >
+          <OrderItemBtn focus="true" onClick={handleClick}>
+            <Span>Ordenar por</Span>
+            {open ? <ExpandLess /> : <ExpandMore />}
+          </OrderItemBtn>
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            <ListOptions component="div" disablePadding>
+              <ItemBtn
+                style={
+                  selectedMajor ? { fontWeight: "bold", color: green } : null
+                }
+                disabled={selectedMajor}
+                divider
                 onClick={majorToMinor}
               >
-                Maior preço
-              </StyledBtn2>
-            </>
-          ) : null}
-        </BtnsDiv>
+                <Span>Maior Preço</Span>
+              </ItemBtn>
+              <ItemBtn
+                style={
+                  selectedMinor ? { fontWeight: "bold", color: green } : null
+                }
+                disabled={selectedMinor}
+                divider
+                onClick={minorToMajor}
+              >
+                <Span>Menor Preço</Span>
+              </ItemBtn>
+            </ListOptions>
+          </Collapse>
+        </List>
       </FilterPaper>
       <Divider />
       <ListGrid>
