@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { bgPage, green, yellow } from "../ui/colors";
-import { Button, Typography } from "@material-ui/core";
+import { Button, Grid, Paper, Typography } from "@material-ui/core";
 import { ArrowRightAltSharp } from "@mui/icons-material";
 
 export const Title = styled(Typography)`
@@ -8,27 +8,47 @@ export const Title = styled(Typography)`
     font-size: 30px;
     font-weight: bold;
     color: ${yellow};
+    width: 200px;
   }
 `;
 
 export const Wrapper = styled.div`
-  min-height: 800px;
   background-color: ${bgPage};
 `;
 
-export const Header = styled.div`
-  display: flex;
-  flex-direction: row;
-  background-color: ${green};
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
+export const Header = styled(Paper)`
+  && {
+    display: flex;
+    flex-direction: row;
+    background-color: ${green};
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+    border-radius: 0px;
+  }
+`;
+
+export const HeaderDiv = styled(Grid)`
+  && {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+`;
+
+//Image
+
+export const Image = styled.img`
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
+  margin-right: 15px;
 `;
 
 export const Footer = styled.div`
   border-top: solid 2px ${yellow};
   background-color: ${green};
-  padding: 15px;
+  padding: 10px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -50,7 +70,7 @@ export const StyledBtn3 = styled(Button)`
     color: ${yellow};
     font-size: small;
     margin: 20px;
-    padding: 5px;
+    padding: 10px;
     width: 50px;
     :hover {
       background-color: ${yellow};

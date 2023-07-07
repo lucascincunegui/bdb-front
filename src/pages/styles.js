@@ -85,8 +85,9 @@ export const Container = styled.div`
   padding: 10px 10px 10px 10px;
 `;
 
-export const ProductsPaper = styled(Paper)`
+export const ProductsPaper = styled(Grid)`
   && {
+    margin-top: 5px;
     background-color: ${bgPage};
     text-align: center;
   }
@@ -181,13 +182,6 @@ export const Subtitle = styled.h2`
 export const Parrafo = styled.p`
   font-weight: bold;
   font-size: 20px;
-`;
-
-//Image
-
-export const Image = styled.img`
-  width: 200px;
-  height: 200px;
 `;
 
 //Button
