@@ -20,15 +20,25 @@ export const NavLinksDiv = styled.div`
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
-  margin: 10px;
+  display: flex;
+  justify-content: space-around;
 `;
 
 export const LinkBtn = styled(Button)`
   && {
-    background-color: ${yellow};
-    color: ${green};
+    width: 150px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: none;
+    background-color: ${green};
+    color: ${yellow};
     font-weight: 600;
-    margin-right: 20px;
+    margin: 10px;
+    :hover {
+      color: ${green};
+      background-color: ${yellow};
+    }
   }
 `;
 

@@ -8,14 +8,14 @@ export default function NavLinks() {
     <NavLinksDiv>
       <StyledLink exact="true" to="/">
         <LinkBtn variant="contained">
-          <HomeIcon style={{ padding: 3 }} />
-          Inicio
+          <HomeIcon style={{ margin: 10 }} />
+          <span style={{ margin: 10 }}>Inicio</span>
         </LinkBtn>
       </StyledLink>
       <StyledLink exact="true" to="/produtos">
         <LinkBtn variant="contained">
-          <StoreIcon style={{ padding: 3 }} />
-          Produtos
+          <StoreIcon style={{ margin: 10 }} />
+          <span style={{ margin: 10 }}>Produtos</span>
         </LinkBtn>
       </StyledLink>
     </NavLinksDiv>

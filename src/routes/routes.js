@@ -8,6 +8,8 @@ import {
   StyledBtn3,
   RigthArrow,
   TextFooter,
+  HeaderDiv,
+  Image,
 } from "./styles";
 import NavLinks from "../components/navLinks";
 import Home from "../pages/home";
@@ -28,12 +30,17 @@ export default function MyRoutes() {
   return (
     <Wrapper>
       <Router>
-        <Paper elevation={3}>
-          <Header>
-            <Title>Bulichu Dos Bichus</Title>
-            <NavLinks />
-          </Header>
-        </Paper>
+        <Header elevation={2}>
+          <HeaderDiv>
+            <Image
+              src={
+                "https://scontent.fmvd3-1.fna.fbcdn.net/v/t39.30808-6/316543554_871719627170813_6757776230591023956_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeEEaPdLAMVHeAgZvWaWcr4hcmwiQGYsV9NybCJAZixX07YnbmMgt0hw7LtgTGEccegQaQ9Z9dJkSe5wWi6LDjG0&_nc_ohc=JC5s5u6hw4UAX9Fip_R&_nc_oc=AQk1LDg6UBL-cCN6FddL3sAMy91vE9n68ha3KlAEtX8kQ8ZL9lM8ZttEhPx440U0TQx5ehzLsoygn_hwophrmvjc&_nc_ht=scontent.fmvd3-1.fna&oh=00_AfDiZGePCHV13WyB8CcLXp1qpBivY6TLCcCy_A65VLxlxQ&oe=64AD93CD"
+              }
+            />
+            <Title>Bulichu Dos Bichos</Title>
+          </HeaderDiv>
+          <NavLinks />
+        </Header>
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/produtos" element={<Products />} />
