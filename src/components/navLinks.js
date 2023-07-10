@@ -7,13 +7,13 @@ export default function NavLinks() {
   return (
     <NavLinksDiv>
       <StyledLink exact="true" to="/">
-        <LinkBtn variant="contained">
+        <LinkBtn disableElevation={true} variant="contained">
           <HomeIcon style={{ margin: 10 }} />
           <span style={{ margin: 10 }}>Inicio</span>
         </LinkBtn>
       </StyledLink>
       <StyledLink exact="true" to="/produtos">
-        <LinkBtn variant="contained">
+        <LinkBtn disableElevation={true} variant="contained">
           <StoreIcon style={{ margin: 10 }} />
           <span style={{ margin: 10 }}>Produtos</span>
         </LinkBtn>
