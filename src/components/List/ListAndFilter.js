@@ -1,6 +1,6 @@
 import Lista from ".";
 
-export default function ListAndFilter({ filter, items, itemsPerPage = 8 }) {
+export default function ListAndFilter({ filter, items, itemsPerPage }) {
   const filteredItems = (terminoBusqueda) => {
     if (!filter) return items;
     return items.filter((elemento) => {

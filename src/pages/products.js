@@ -106,7 +106,7 @@ export default function Products() {
       </FilterPaper>
       <Divider />
       <ListGrid>
-        <ListAndFilter items={sortedProducts} filter={busqueda} itemsPerPage={10} />
+        <ListAndFilter items={sortedProducts} filter={busqueda} itemsPerPage={12} />
       </ListGrid>
     </ProductsPaper>
   )
