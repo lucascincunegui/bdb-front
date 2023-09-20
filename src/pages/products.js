@@ -7,7 +7,7 @@ import {
   OrderItemBtn,
   Span,
   FilterPaper,
-  ListGrid
+  ListGrid,
 } from "./styles";
 import { Divider, InputAdornment, TextField } from "@material-ui/core";
 import { green } from "../ui/colors";
@@ -26,15 +26,15 @@ export default function Products() {
   const [open, setOpen] = useState(false);
 
   const loadData = () => {
-    console.log('Arthur')
+    console.log("Arthur");
     getProducts().then(setProduct);
   };
 
   useEffect(loadData, []);
 
   const sortedProducts = useMemo(() => {
-
-    if (smallest === null) return product.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    if (smallest === null)
+      return product.sort((a, b) => a.nombre.localeCompare(b.nombre));
 
     setOpen(false);
     if (smallest) return product.sort((a, b) => a.valor - b.valor);
@@ -48,10 +48,10 @@ export default function Products() {
   return (
     <ProductsPaper>
       <FilterPaper>
-        <InputDiv>
+        <InputDiv elevation={0}>
           <TextField
             value={busqueda}
-            onChange={e => setBusqueda(e.target.value)}
+            onChange={(e) => setBusqueda(e.target.value)}
             fullWidth
             color="secondary"
             id="Buscar produtos"
@@ -59,6 +59,7 @@ export default function Products() {
             placeholder="Buscar produtos..."
             autoComplete="off"
             InputProps={{
+              style: { padding: 1 },
               endAdornment: (
                 <InputAdornment position="end">
                   <SearchIcon sx={{ color: green, mr: 1, my: 0.5 }} />
@@ -82,7 +83,9 @@ export default function Products() {
             <ListOptions component="div" disablePadding>
               <ItemBtn
                 style={
-                  smallest === false ? { fontWeight: "bold", color: green } : null
+                  smallest === false
+                    ? { fontWeight: "bold", color: green }
+                    : null
                 }
                 disabled={smallest === false}
                 divider
@@ -91,9 +94,7 @@ export default function Products() {
                 <Span>Maior Preço</Span>
               </ItemBtn>
               <ItemBtn
-                style={
-                  smallest ? { fontWeight: "bold", color: green } : null
-                }
+                style={smallest ? { fontWeight: "bold", color: green } : null}
                 disabled={smallest}
                 divider
                 onClick={() => setSmallest(true)}
@@ -106,8 +107,12 @@ export default function Products() {
       </FilterPaper>
       <Divider />
       <ListGrid>
-        <ListAndFilter items={sortedProducts} filter={busqueda} itemsPerPage={12} />
+        <ListAndFilter
+          items={sortedProducts}
+          filter={busqueda}
+          itemsPerPage={12}
+        />
       </ListGrid>
     </ProductsPaper>
-  )
+  );
 }
