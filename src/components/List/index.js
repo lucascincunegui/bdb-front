@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ProductCard from "../../components/card";
 import {
   ItemsGrid,
@@ -19,7 +19,7 @@ function ListProductCard({ items }) {
   ));
 }
 
-export default function Lista({ products, itemsPerPage = 8 }) {
+export default function Lista({ products, itemsPerPage }) {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(products.length / itemsPerPage);
 
@@ -46,13 +46,6 @@ export default function Lista({ products, itemsPerPage = 8 }) {
     setCurrentPage(prevPage);
   };
 
-  useEffect(() => {
-    console.log({
-      currentPage,
-      totalPages
-    })
-  }, [currentPage, totalPages]);
-
   return (
     <WrapperGrid>
       <ItemsGrid container>
@@ -74,7 +67,7 @@ export default function Lista({ products, itemsPerPage = 8 }) {
           {currentPage} de {totalPages}
         </PageNumber>
 
-        {currentPage <= totalPages ? (
+        {currentPage < totalPages ? (
           <StyledBtn
             onClick={nextHandler}
             variant="contained"
