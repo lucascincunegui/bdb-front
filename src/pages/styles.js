@@ -117,6 +117,7 @@ export const InputDiv = styled(Paper)`
     display: flex;
     flex-direction: row;
     align-items: flex-end;
+    margin: 25px;
   }
 `;
 
