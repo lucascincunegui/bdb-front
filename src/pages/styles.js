@@ -30,6 +30,7 @@ export const SocialMedia = styled(Grid)`
 
 export const GridIg = styled(Paper)`
   && {
+    background-color: red;
     display: flex;
     flex-direction: column;
     align-items: center;

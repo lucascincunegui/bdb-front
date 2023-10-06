@@ -1,13 +1,5 @@
 import React from "react";
 import { CardContent, Divider } from "@material-ui/core";
-import {
-  CardContainer,
-  DescriptionBtn,
-  ItemCard,
-  ItemMedia,
-  ItemName,
-  ItemValue,
-} from "./styles";
 
 export default function ProductCard({ name, value, link }) {
   const formatedValue = value.toLocaleString("pt-br", {
@@ -16,18 +8,18 @@ export default function ProductCard({ name, value, link }) {
   });
 
   return (
-    <ItemCard elevation={3}>
-      <CardContainer>
-        <ItemMedia alt={"image " + name} image={link} />
-      </CardContainer>
+    <div className="item-card">
+      <div className="card-container">
+        <h1 className="item-name" alt={"image " + name} image={link} />
+      </div>
       <Divider />
       <CardContent>
-        <ItemValue>{formatedValue}</ItemValue>
-        <ItemName>{name}</ItemName>
+        <h1 className="item-value">{formatedValue}</h1>
+        <h1 className="item-name">{name}</h1>
       </CardContent>
       <CardContent>
-        <DescriptionBtn>Ver descrição</DescriptionBtn>
+        <button>Ver descrição</button>
       </CardContent>
-    </ItemCard>
+    </div>
   );
 }

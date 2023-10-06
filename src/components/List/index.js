@@ -1,12 +1,5 @@
 import React, { useState } from "react";
 import ProductCard from "../../components/card";
-import {
-  ItemsGrid,
-  StyledBtn,
-  PageNumber,
-  StyledBtnGroup,
-  WrapperGrid,
-} from "../styles";
 
 function ListProductCard({ items }) {
   return items.map((product, index) => (
@@ -28,12 +21,11 @@ export default function Lista({ products, itemsPerPage }) {
     return products.slice(itemsPerPage * (current - 1), itemsPerPage * current);
   };
 
-
   //BOTON SIGUIENTE
   const nextHandler = () => {
-    console.log('nextHandler')
+    console.log("nextHandler");
     if (totalPages <= currentPage) return setCurrentPage(1);
-    return setCurrentPage(c => c + 1);
+    return setCurrentPage((c) => c + 1);
   };
 
   //BOTON ANTERIOR
@@ -41,41 +33,33 @@ export default function Lista({ products, itemsPerPage }) {
     const prevPage = currentPage - 1;
 
     if (currentPage - 1 <= 0) {
-      return setCurrentPage(totalPages)
+      return setCurrentPage(totalPages);
     }
     setCurrentPage(prevPage);
   };
 
   return (
-    <WrapperGrid>
-      <ItemsGrid container>
-        <ListProductCard
-          items={getPage()}
-        />
-      </ItemsGrid>
-      <StyledBtnGroup orientation="horizontal">
+    <div className="wrapper">
+      <div className="items-grid">
+        <ListProductCard items={getPage()} />
+      </div>
+      <button className="btn-group">
         {currentPage !== 1 ? (
-          <StyledBtn
-            onClick={prevHandler}
-            variant="contained"
-          >
+          <button className="btn" onClick={prevHandler} variant="contained">
             Anterior
-          </StyledBtn>
+          </button>
         ) : null}
 
-        <PageNumber>
+        <h1 className="page-number">
           {currentPage} de {totalPages}
-        </PageNumber>
+        </h1>
 
         {currentPage < totalPages ? (
-          <StyledBtn
-            onClick={nextHandler}
-            variant="contained"
-          >
+          <button className="btn" onClick={nextHandler} variant="contained">
             Seguinte
-          </StyledBtn>
+          </button>
         ) : null}
-      </StyledBtnGroup>
-    </WrapperGrid>
+      </button>
+    </div>
   );
 }
