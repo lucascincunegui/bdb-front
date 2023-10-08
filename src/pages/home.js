@@ -1,16 +1,7 @@
 import React from "react";
 import { Facebook, Instagram } from "@mui/icons-material";
-import {
-  FbImage,
-  IgImage,
-  Social,
-  SocialMedia,
-  GridFb,
-  GridIg,
-  Text,
-  TextDiv,
-} from "./styles";
 import { Divider } from "@material-ui/core";
+import "../css/style.css";
 
 export default function Home() {
   const facebook = () => {
@@ -23,30 +14,38 @@ export default function Home() {
 
   return (
     <div>
-      <p style={{ fontSize: 20, margin: 20 }}>
-        Aqui você encontra tudo o que precisar para o seu pet!
+      <p className="p">
+        Aqui você encontra tudo o que precisar para o seu pet!aaaaaaaaaaaaaaa
       </p>
       <Divider />
-      <Social elevation={3}>
-        <SocialMedia onClick={facebook}>
-          <GridFb elevation={2}>
-            <FbImage alt="Facebook" src="../../assets/facebook.png" />
-            <TextDiv>
+      <div className="social">
+        <div className="social-media" onClick={facebook}>
+          <div className="facebook">
+            <img
+              style={{ width: 500 }}
+              alt="Facebook"
+              src="../../assets/facebook.png"
+            />
+            <div className="text-div">
               <Facebook fontSize="large" />
-              <Text>CONHEÇA NOSSO FACEBOOK!</Text>
-            </TextDiv>
-          </GridFb>
-        </SocialMedia>
-        <SocialMedia onClick={instagram}>
-          <GridIg elevation={2}>
-            <IgImage src="../../assets/instagram.png" alt="Instagram" />
-            <TextDiv>
+              <h1 className="text">CONHEÇA NOSSO FACEBOOK!</h1>
+            </div>
+          </div>
+        </div>
+        <div className="social-media" onClick={instagram}>
+          <div className="instagram">
+            <img
+              style={{ width: 518 }}
+              src="../../assets/instagram.png"
+              alt="Instagram"
+            />
+            <div className="text-div">
               <Instagram fontSize="large" />
-              <Text>CONHEÇA NOSSO INSTAGRAM!</Text>
-            </TextDiv>
-          </GridIg>
-        </SocialMedia>
-      </Social>
+              <h1 className="text">CONHEÇA NOSSO INSTAGRAM!</h1>
+            </div>
+          </div>
+        </div>
+      </div>
       <Divider />
     </div>
   );
