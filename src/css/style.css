@@ -86,6 +86,7 @@ p {
   padding: 50px;
   display: flex;
   justify-content: center;
+  flex-flow: row wrap;
 }
 .wrapper .btn-group {
   padding-bottom: 40px;
@@ -129,7 +130,9 @@ p {
 .item-card .card-container {
   display: flex;
   align-items: center;
-  height: 300px;
+}
+.item-card .item-img {
+  max-width: 250px;
 }
 .item-card .item-name {
   text-align: left;
@@ -144,4 +147,97 @@ p {
 .item-card .item-value {
   text-align: left;
   font-size: 18px;
+}
+.item-card .div-content {
+  padding: 20px;
+}
+
+.products-wrapper {
+  margin-top: 5px;
+  background-color: rgba(240, 240, 240, 0.8509803922);
+  text-align: center;
+}
+.products-wrapper .div-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(240, 240, 240, 0.8509803922);
+}
+.products-wrapper .div-input {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin: 25px;
+}
+.products-wrapper .div-grid {
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+}
+.products-wrapper .item-btn {
+  border-radius: 4px;
+  border-right: 5px;
+}
+.products-wrapper .item-btn :hover {
+  background: transparent;
+}
+
+.routes-wrapper {
+  background-color: rgba(240, 240, 240, 0.8509803922);
+}
+.routes-wrapper .header {
+  display: flex;
+  flex-direction: row;
+  background-color: green;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px;
+  border-radius: 0px;
+}
+.routes-wrapper .header-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.routes-wrapper .image {
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
+  margin-right: 15px;
+}
+.routes-wrapper .title {
+  font-size: 30px;
+  font-weight: bold;
+  color: yellow;
+  width: 200px;
+}
+.routes-wrapper .footer {
+  border-top: solid 2px yellow;
+  background-color: green;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.routes-wrapper .text-footer {
+  display: flex;
+  flex-flow: row wrap;
+  font-size: 16px;
+  width: 135px;
+  color: yellow;
+  font-weight: 500;
+}
+.routes-wrapper .styled-btn {
+  background-color: green;
+  color: yellow;
+  font-size: small;
+  margin: 20px;
+  padding: 10px;
+  width: 50px;
+}
+.routes-wrapper .styled-btn :hover {
+  background-color: yellow;
+  color: green;
 }/*# sourceMappingURL=style.css.map */

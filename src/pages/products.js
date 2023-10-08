@@ -1,14 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import {
-  InputDiv,
-  ProductsPaper,
-  ItemBtn,
-  ListOptions,
-  OrderItemBtn,
-  Span,
-  FilterPaper,
-  ListGrid,
-} from "./styles";
+import React, { useEffect, useMemo, useState } from "react";
 import { Divider, InputAdornment, TextField } from "@material-ui/core";
 import { green } from "../ui/colors";
 import SearchIcon from "@mui/icons-material/Search";
@@ -18,6 +8,7 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import ListAndFilter from "../components/List/ListAndFilter";
 import { getProducts } from "../helpers/API";
+import { ListItemButton } from "@mui/material";
 
 export default function Products() {
   const [busqueda, setBusqueda] = useState(null);
@@ -46,9 +37,9 @@ export default function Products() {
   };
 
   return (
-    <ProductsPaper>
-      <FilterPaper>
-        <InputDiv elevation={0}>
+    <div className="products-wrapper">
+      <div className="div-filter">
+        <div className="div-input">
           <TextField
             value={busqueda}
             onChange={(e) => setBusqueda(e.target.value)}
@@ -67,7 +58,7 @@ export default function Products() {
               ),
             }}
           />
-        </InputDiv>
+        </div>
         <List
           sx={{
             width: "100%",
@@ -75,13 +66,31 @@ export default function Products() {
           }}
           component="nav"
         >
-          <OrderItemBtn focus="true" onClick={handleClick}>
-            <Span>Ordenar por</Span>
+          <ListItemButton
+            style={{ borderRadius: 4, borderRight: 5 }}
+            focus="true"
+            onClick={handleClick}
+          >
+            <span style={{ padding: 10 }}>Ordenar por</span>
             {open ? <ExpandLess /> : <ExpandMore />}
-          </OrderItemBtn>
+          </ListItemButton>
           <Collapse in={open} timeout="auto" unmountOnExit>
-            <ListOptions component="div" disablePadding>
-              <ItemBtn
+            <List
+              style={{
+                position: "absolute",
+                backgroundColor: "white",
+                display: "flex",
+                flexFlow: "row wrap",
+                alignItems: "center",
+                borderRadius: 4,
+                borderLeft: 1,
+                borderLeftStyle: "solid",
+                borderLeftColor: "#003c2250",
+              }}
+              component="div"
+              disablePadding
+            >
+              <ListItemButton
                 style={
                   smallest === false
                     ? { fontWeight: "bold", color: green }
@@ -91,28 +100,28 @@ export default function Products() {
                 divider
                 onClick={() => setSmallest(false)}
               >
-                <Span>Maior Preço</Span>
-              </ItemBtn>
-              <ItemBtn
+                <span style={{ padding: 10 }}>Maior Preço</span>
+              </ListItemButton>
+              <ListItemButton
                 style={smallest ? { fontWeight: "bold", color: green } : null}
                 disabled={smallest}
                 divider
                 onClick={() => setSmallest(true)}
               >
-                <Span>Menor Preço</Span>
-              </ItemBtn>
-            </ListOptions>
+                <span style={{ padding: 10 }}>Menor Preço</span>
+              </ListItemButton>
+            </List>
           </Collapse>
         </List>
-      </FilterPaper>
+      </div>
       <Divider />
-      <ListGrid>
+      <div className="div-grid">
         <ListAndFilter
           items={sortedProducts}
           filter={busqueda}
           itemsPerPage={12}
         />
-      </ListGrid>
-    </ProductsPaper>
+      </div>
+    </div>
   );
 }

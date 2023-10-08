@@ -1,11 +1,10 @@
 import React from "react";
-import { Container, Parrafo, Subtitle } from "./styles";
 
 export default function Error404() {
   return (
-    <Container>
-      <Subtitle>Error404</Subtitle>
-      <Parrafo>Not found</Parrafo>
-    </Container>
+    <div>
+      <h1>Error404</h1>
+      <h2>Not found</h2>
+    </div>
   );
 }
