@@ -1,5 +1,5 @@
 import React from "react";
-import { Divider } from "@material-ui/core";
+import "../css/style.css";
 
 export default function ProductCard({ name, value, link }) {
   const formatedValue = value.toLocaleString("pt-br", {
@@ -8,18 +8,15 @@ export default function ProductCard({ name, value, link }) {
   });
 
   return (
-    <div className="item-card">
+    <wrapper className="card">
       <div className="card-container">
-        <img className="item-img" alt={"image " + name} src={link} />
+        <img className="card-container-img" alt={"image " + name} src={link} />
       </div>
-      <Divider />
-      <div className="div-content">
-        <h1 className="item-value">{formatedValue}</h1>
-        <h1 className="item-name">{name}</h1>
+      <div className="card-div">
+        <h1 className="card-div-value">{formatedValue}</h1>
+        <h1 className="card-div-name">{name}</h1>
+        <button className="card-div-btn">Ver descrição</button>
       </div>
-      <div className="div-content">
-        <button>Ver descrição</button>
-      </div>
-    </div>
+    </wrapper>
   );
 }
