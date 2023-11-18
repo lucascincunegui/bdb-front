@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Divider, InputAdornment, TextField } from "@material-ui/core";
-import { green } from "../ui/colors";
 import SearchIcon from "@mui/icons-material/Search";
 import List from "@mui/material/List";
 import Collapse from "@mui/material/Collapse";
@@ -53,7 +52,7 @@ export default function Products() {
               style: { padding: 1 },
               endAdornment: (
                 <InputAdornment position="end">
-                  <SearchIcon sx={{ color: green, mr: 1, my: 0.5 }} />
+                  <SearchIcon sx={{ color: " #003c22", mr: 1, my: 0.5 }} />
                 </InputAdornment>
               ),
             }}
@@ -93,7 +92,7 @@ export default function Products() {
               <ListItemButton
                 style={
                   smallest === false
-                    ? { fontWeight: "bold", color: green }
+                    ? { fontWeight: "bold", color: " #003c22" }
                     : null
                 }
                 disabled={smallest === false}
@@ -103,7 +102,9 @@ export default function Products() {
                 <span style={{ padding: 10 }}>Maior Preço</span>
               </ListItemButton>
               <ListItemButton
-                style={smallest ? { fontWeight: "bold", color: green } : null}
+                style={
+                  smallest ? { fontWeight: "bold", color: " #003c22" } : null
+                }
                 disabled={smallest}
                 divider
                 onClick={() => setSmallest(true)}

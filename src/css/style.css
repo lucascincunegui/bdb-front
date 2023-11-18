@@ -1,23 +1,7 @@
 p {
   color: black;
   font-size: 20px;
-}
-
-.social-media {
-  display: flex;
-  justify-content: center;
-  transition: transform 0.2s;
-  cursor: pointer;
-}
-.social-media :hover {
-  transform: scale(1.01);
-}
-
-.text-div {
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 20px;
 }
 
 .social {
@@ -28,16 +12,37 @@ p {
   padding-bottom: 60px;
   background: linear-gradient(0deg, rgba(240, 240, 240, 0.8509803922), rgb(220, 220, 220), rgba(240, 240, 240, 0.8509803922));
 }
-
-.facebook {
+.social .social-media {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.social .social-media :hover {
+  transform: scale(1.01);
+}
+.social .social-media .facebook {
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
   background: #4267b2;
 }
-
-.instagram {
+.social .social-media .img {
+  width: 500px;
+}
+.social .social-media .text-div {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.social .social-media .text {
+  font-size: 20px;
+  justify-content: center;
+  padding: 15px;
+}
+.social .social-media .instagram {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,35 +50,37 @@ p {
   background: linear-gradient(120deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
 }
 
-.text {
-  font-size: 20px;
-  justify-content: center;
-  padding: 15px;
-}
-
-.navlinks {
+.nav {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
-.navlinks .link {
+.nav-link {
+  margin: 10px;
+  max-width: 150px;
   text-decoration: none;
   display: flex;
   justify-content: space-around;
 }
-.navlinks .link-btn {
-  width: 150px;
+.nav-btn {
+  border: 0.5px solid #fed227;
+  border-radius: 4px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  box-shadow: none;
-  background-color: green;
-  color: yellow;
-  font-weight: 600;
+  cursor: pointer;
+  background-color: #003c22;
+  color: #fed227;
+}
+.nav-btn:hover {
+  color: #003c22;
+  background-color: #fed227;
+}
+.nav-icon {
   margin: 10px;
 }
-.navlinks .link-btn :hover {
-  color: green;
-  background-color: yellow;
+.nav-text {
+  margin: 10px;
 }
 
 .wrapper {
@@ -96,45 +103,53 @@ p {
   align-content: space-around;
 }
 .wrapper .btn {
-  background-color: yellow;
-  color: green;
-  font-weight: 600;
+  border: 0.5px solid #003c22;
+  border-radius: 4px;
+  padding: 5px 10px;
   margin: 15px;
-  font-size: 20px;
+  cursor: pointer;
+  color: #003c22;
+  background-color: #fed227;
 }
 .wrapper .page-number {
-  background-color: green;
-  color: yellow;
+  background-color: #003c22;
+  color: #fed227;
   font-weight: 600;
   margin: 10px;
   padding: 10px;
   border-radius: 10px;
 }
 
-.item-card {
+.card {
   text-align: center;
   min-width: 250px;
   max-width: 250px;
   margin: 10px;
   box-sizing: border-box;
-  border-color: yellow;
+  border-color: #fed227;
   border-width: 1px;
   border-style: solid;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-around;
 }
-.item-card :hover {
+.card :hover {
   box-shadow: 0px 0px 10px 0px gray;
 }
-.item-card .card-container {
+.card-container {
   display: flex;
   align-items: center;
 }
-.item-card .item-img {
-  max-width: 250px;
+.card-container-img {
+  width: 248px;
 }
-.item-card .item-name {
+.card-div {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  padding: 20px;
+}
+.card-div-name {
   text-align: left;
   text-transform: capitalize;
   text-overflow: ellipsis;
@@ -144,12 +159,18 @@ p {
   white-space: nowrap;
   padding-right: 20px;
 }
-.item-card .item-value {
+.card-div-value {
   text-align: left;
   font-size: 18px;
 }
-.item-card .div-content {
-  padding: 20px;
+.card-div-btn {
+  border: 0.5px solid #003c22;
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin: 15px;
+  cursor: pointer;
+  color: #003c22;
+  background-color: #fed227;
 }
 
 .products-wrapper {
@@ -189,55 +210,59 @@ p {
 .routes-wrapper .header {
   display: flex;
   flex-direction: row;
-  background-color: green;
+  background-color: #003c22;
   align-items: center;
   justify-content: space-around;
   padding: 10px;
   border-radius: 0px;
+  background-color: #003c22;
+  color: #fed227;
+  border-bottom: solid 1px #fed227;
 }
 .routes-wrapper .header-div {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.routes-wrapper .image {
-  width: 100px;
-  height: 100px;
-  border-radius: 4px;
-  margin-right: 15px;
-}
-.routes-wrapper .title {
+.routes-wrapper .header-div-title {
   font-size: 30px;
   font-weight: bold;
-  color: yellow;
+  color: #fed227;
   width: 200px;
 }
 .routes-wrapper .footer {
-  border-top: solid 2px yellow;
-  background-color: green;
+  border-top: solid 1px #fed227;
+  background-color: #003c22;
   padding: 10px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-.routes-wrapper .text-footer {
+.routes-wrapper .footer-text {
   display: flex;
   flex-flow: row wrap;
   font-size: 16px;
   width: 135px;
-  color: yellow;
+  color: #fed227;
   font-weight: 500;
 }
-.routes-wrapper .styled-btn {
-  background-color: green;
-  color: yellow;
-  font-size: small;
-  margin: 20px;
-  padding: 10px;
-  width: 50px;
+.routes-wrapper .footer-links {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 }
-.routes-wrapper .styled-btn :hover {
-  background-color: yellow;
-  color: green;
+.routes-wrapper .footer-links-btn {
+  display: fl;
+  border: 0.5px solid #fed227;
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin: 15px;
+  cursor: pointer;
+  background-color: #003c22;
+  color: #fed227;
+}
+.routes-wrapper .footer-links :hover {
+  color: #003c22;
+  background-color: #fed227;
 }/*# sourceMappingURL=style.css.map */

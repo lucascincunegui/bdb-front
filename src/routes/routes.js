@@ -25,14 +25,7 @@ export default function MyRoutes() {
       <Router>
         <div className="header">
           <div className="header-div">
-            <img
-              className="image"
-              alt="imagem"
-              src={
-                "https://scontent.fmvd3-1.fna.fbcdn.net/v/t39.30808-6/316543554_871719627170813_6757776230591023956_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeEEaPdLAMVHeAgZvWaWcr4hcmwiQGYsV9NybCJAZixX07YnbmMgt0hw7LtgTGEccegQaQ9Z9dJkSe5wWi6LDjG0&_nc_ohc=JC5s5u6hw4UAX9Fip_R&_nc_oc=AQk1LDg6UBL-cCN6FddL3sAMy91vE9n68ha3KlAEtX8kQ8ZL9lM8ZttEhPx440U0TQx5ehzLsoygn_hwophrmvjc&_nc_ht=scontent.fmvd3-1.fna&oh=00_AfDiZGePCHV13WyB8CcLXp1qpBivY6TLCcCy_A65VLxlxQ&oe=64AD93CD"
-              }
-            />
-            <h1 className="title">Bulichu Dos Bichos</h1>
+            <h1 className="header-title">Bulichu Dos Bichos</h1>
           </div>
           <NavLinks />
         </div>
@@ -41,20 +34,20 @@ export default function MyRoutes() {
           <Route exact path="/produtos" element={<Products />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
-        <div>
-          <div className="footer">
-            <div className="text-footer">Siganos para entrar em contato</div>
-            <ArrowRightAltSharp
-              style={{ margin: 20, color: "yellow" }}
-              fontSize="large"
-            />
-            <button className="styled-btn" onClick={facebook}>
+        <div className="footer">
+          <div className="footer-text">Siganos para entrar em contato</div>
+          <ArrowRightAltSharp
+            style={{ margin: 20, color: "yellow" }}
+            fontSize="large"
+          />
+          <div className="footer-links">
+            <button className="footer-links-btn" onClick={facebook}>
               <Facebook fontSize="large" />
             </button>
-            <button className="styled-btn" onClick={instagram}>
+            <button className="footer-links-btn" onClick={instagram}>
               <Instagram fontSize="large" />
             </button>
-            <button className="styled-btn">
+            <button className="footer-links-btn">
               <WhatsApp fontSize="large" />
             </button>
           </div>

@@ -4,14 +4,11 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import Navigation from "./routes/routes";
 import { ThemeProvider } from "@material-ui/core";
-import { Theme } from "./ui/colors";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={Theme}>
-      <Navigation />
-    </ThemeProvider>
+    <Navigation />
   </React.StrictMode>
 );
 

@@ -1,6 +1,5 @@
 import React from "react";
 import { Facebook, Instagram } from "@mui/icons-material";
-import { Divider } from "@material-ui/core";
 import "../css/style.css";
 
 export default function Home() {
@@ -15,14 +14,13 @@ export default function Home() {
   return (
     <div>
       <p className="p">
-        Aqui você encontra tudo o que precisar para o seu pet!aaaaaaaaaaaaaaa
+        Aqui você encontra tudo o que precisar para o seu pet!
       </p>
-      <Divider />
       <div className="social">
         <div className="social-media" onClick={facebook}>
           <div className="facebook">
             <img
-              style={{ width: 500 }}
+              className="img"
               alt="Facebook"
               src="../../assets/facebook.png"
             />
@@ -46,7 +44,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <Divider />
     </div>
   );
 }

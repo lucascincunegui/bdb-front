@@ -1,22 +1,12 @@
+@use 'variables'
+@use 'mixins'
+
 //home.js
 
 p
     color: black
     font-size: 20px
-
-.social-media
-    display: flex
-    justify-content: center
-    transition: transform 0.2s
-    cursor: pointer
-    :hover
-        transform: scale(1.01)
-
-.text-div
-    color: white
-    display: flex
-    justify-content: center
-    align-items: center
+    margin: 20px
 
 .social
     display: flex
@@ -26,49 +16,73 @@ p
     padding-bottom: 60px
     background: linear-gradient(0deg, #f0f0f0d9, rgb(220, 220, 220), #f0f0f0d9)
 
-.facebook
-    display: flex
-    flex-direction: column
-    align-items: center
-    border-radius: 10px
-    background: #4267b2
+    .social-media
+        display: flex
+        justify-content: center
+        cursor: pointer
+        transition: transform 0.2s
+        :hover
+            transform: scale(1.01)
 
-.instagram
-    display: flex
-    flex-direction: column
-    align-items: center
-    border-radius: 10px
-    background: linear-gradient(120deg, #405de6, #5851db, #833ab4, #c13584,#e1306c, #fd1d1d)
+        .facebook
+            display: flex
+            flex-direction: column
+            align-items: center
+            border-radius: 10px
+            background: #4267b2
 
-.text
-    font-size: 20px
-    justify-content: center
-    padding: 15px
+        .img
+            width: 500px
+
+        .text-div
+            color: white
+            display: flex
+            justify-content: center
+            align-items: center
+
+        .text
+            font-size: 20px
+            justify-content: center
+            padding: 15px
+
+        .instagram
+            display: flex
+            flex-direction: column
+            align-items: center
+            border-radius: 10px
+            background: linear-gradient(120deg, #405de6, #5851db, #833ab4, #c13584,#e1306c, #fd1d1d)
 
 //navLinks.js
-
-.navlinks
+.nav
     display: flex
     flex-direction: row
+    align-items: center
 
-    .link
+    &-link
+        margin: 10px
+        max-width: 150px
         text-decoration: none
         display: flex
         justify-content: space-around
 
-    .link-btn
-        width: 150px
+    &-btn
+        border: 0.5px solid variables.$yellow
+        border-radius: 4px
         display: flex
         justify-content: space-around
         align-items: center
-        box-shadow: none
-        background-color: green
-        color: yellow
-        font-weight: 600
+        cursor: pointer
+        background-color: variables.$green
+        color: variables.$yellow
+        &:hover
+            color: variables.$green
+            background-color: variables.$yellow
+
+    &-icon
         margin: 10px
-        :hover
-            color: green
-            background-color: yellow
+
+    &-text
+        margin: 10px
 
 //index.js
 
@@ -92,15 +106,17 @@ p
         align-content: space-around
 
     .btn
-        background-color: yellow
-        color: green
-        font-weight: 600
+        border: 0.5px solid variables.$green
+        border-radius: 4px
+        padding: 5px 10px
         margin: 15px
-        font-size: 20px
+        cursor: pointer
+        color: variables.$green
+        background-color: variables.$yellow
 
     .page-number
-        background-color: green
-        color: yellow
+        background-color: variables.$green
+        color: variables.$yellow
         font-weight: 600
         margin: 10px
         padding: 10px
@@ -108,44 +124,57 @@ p
 
 //card.js
 
-.item-card
+.card
     text-align: center
     min-width: 250px
     max-width: 250px
     margin: 10px
     box-sizing: border-box
-    border-color: yellow
+    border-color: variables.$yellow
     border-width: 1px
     border-style: solid
     display: flex
     flex-flow: column nowrap
     justify-content: space-around
+
     :hover
         box-shadow: 0px 0px 10px 0px gray
 
-    .card-container
+    &-container
         display: flex
         align-items: center
 
-    .item-img
-        max-width: 250px
+        &-img
+            width: 248px
 
-    .item-name
-        text-align: left
-        text-transform: capitalize
-        text-overflow: ellipsis
-        font-size: 14px
-        line-height: 1.3
-        overflow: hidden
-        white-space: nowrap
-        padding-right: 20px
-
-    .item-value
-        text-align: left
-        font-size: 18px
-
-    .div-content
+    &-div
+        display: flex
+        flex-flow: column nowrap
+        justify-content: space-around
         padding: 20px
+
+        &-name
+            text-align: left
+            text-transform: capitalize
+            text-overflow: ellipsis
+            font-size: 14px
+            line-height: 1.3
+            overflow: hidden
+            white-space: nowrap
+            padding-right: 20px
+
+        &-value
+            text-align: left
+            font-size: 18px
+
+        &-btn
+            border: 0.5px solid variables.$green
+            border-radius: 4px
+            padding: 5px 10px
+            margin: 15px
+            cursor: pointer
+            color: variables.$green
+            background-color: variables.$yellow
 
 //products.js
 
@@ -185,53 +214,56 @@ p
     .header
         display: flex
         flex-direction: row
-        background-color: green
+        background-color: variables.$green
         align-items: center
         justify-content: space-around
         padding: 10px
         border-radius: 0px
+        background-color: variables.$green
+        color: variables.$yellow
+        border-bottom: solid 1px variables.$yellow
 
-    .header-div
-        display: flex
-        flex-direction: row
-        align-items: center
+        &-div
+            display: flex
+            flex-direction: row
+            align-items: center
 
-    .image
-        width: 100px
-        height: 100px
-        border-radius: 4px
-        margin-right: 15px
-
-    .title
-        font-size: 30px
-        font-weight: bold
-        color: yellow
-        width: 200px
+            &-title
+                font-size: 30px
+                font-weight: bold
+                color: variables.$yellow
+                width: 200px
 
     .footer
-        border-top: solid 2px yellow
-        background-color: green
+        border-top: solid 1px variables.$yellow
+        background-color: variables.$green
         padding: 10px
         display: flex
         flex-direction: row
         justify-content: center
         align-items: center
 
-    .text-footer
-        display: flex
-        flex-flow: row wrap
-        font-size: 16px
-        width: 135px
-        color: yellow
-        font-weight: 500
+        &-text
+            display: flex
+            flex-flow: row wrap
+            font-size: 16px
+            width: 135px
+            color: variables.$yellow
+            font-weight: 500
 
-    .styled-btn
-        background-color: green
-        color: yellow
-        font-size: small
-        margin: 20px
-        padding: 10px
-        width: 50px
-        :hover
-            background-color: yellow
-            color: green
+        &-links
+            @include mixins.center
+            flex-direction: row
+
+            &-btn
+                display: fl
+                border: 0.5px solid variables.$yellow
+                border-radius: 4px
+                padding: 5px 10px
+                margin: 15px
+                cursor: pointer
+                background-color: variables.$green
+                color: variables.$yellow
+            :hover
+                color: variables.$green
+                background-color: variables.$yellow
