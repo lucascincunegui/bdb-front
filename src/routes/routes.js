@@ -28,7 +28,7 @@ export default function MyRoutes() {
             <h1 className="header-title">Bulichu Dos Bichos</h1>
           </div>
           <NavLinks />
-        </div>
+        </div> 
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/produtos" element={<Products />} />

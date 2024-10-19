@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Divider, InputAdornment, TextField } from "@material-ui/core";
+import { InputAdornment, TextField } from "@material-ui/core";
 import SearchIcon from "@mui/icons-material/Search";
 import List from "@mui/material/List";
 import Collapse from "@mui/material/Collapse";
@@ -43,13 +43,18 @@ export default function Products() {
             value={busqueda}
             onChange={(e) => setBusqueda(e.target.value)}
             fullWidth
-            color="secondary"
+            color="primary"
             id="Buscar produtos"
             variant="outlined"
             placeholder="Buscar produtos..."
             autoComplete="off"
             InputProps={{
-              style: { padding: 1 },
+              style: {
+                padding: 1,
+                width: 350,
+                height: 45,
+                backgroundColor: "white",
+              },
               endAdornment: (
                 <InputAdornment position="end">
                   <SearchIcon sx={{ color: " #003c22", mr: 1, my: 0.5 }} />
@@ -115,7 +120,6 @@ export default function Products() {
           </Collapse>
         </List>
       </div>
-      <Divider />
       <div className="div-grid">
         <ListAndFilter
           items={sortedProducts}

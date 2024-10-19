@@ -1,6 +1,11 @@
 @use 'variables'
 @use 'mixins'
 
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
 //home.js
 
 p
@@ -12,17 +17,13 @@ p
     display: flex
     flex-direction: row
     justify-content: space-around
-    padding-top: 60px
-    padding-bottom: 60px
-    background: linear-gradient(0deg, #f0f0f0d9, rgb(220, 220, 220), #f0f0f0d9)
+    padding: 40px 40px
 
     .social-media
+        margin: 0px 20px
         display: flex
         justify-content: center
         cursor: pointer
-        transition: transform 0.2s
-        :hover
-            transform: scale(1.01)
 
         .facebook
             display: flex
@@ -31,26 +32,57 @@ p
             border-radius: 10px
             background: #4267b2
 
-        .img
-            width: 500px
-
-        .text-div
-            color: white
-            display: flex
-            justify-content: center
-            align-items: center
-
-        .text
-            font-size: 20px
-            justify-content: center
-            padding: 15px
-
         .instagram
             display: flex
             flex-direction: column
             align-items: center
             border-radius: 10px
             background: linear-gradient(120deg, #405de6, #5851db, #833ab4, #c13584,#e1306c, #fd1d1d)
+
+        .img
+            width: 400px
+
+        .text-div
+            color: white
+            display: flex
+            justify-content: center
+            align-items: center
+            height: 40px
+
+        .text
+            font-size: 20px
+
+//Carousel
+.carousel
+    margin: 0px 20px
+    padding: 20px 0px
+    display: flex
+    justify-content: center
+    align-items: center
+    // border-radius: 4px
+    // background-color: white
+    // box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px
+
+    &-btn
+        display: flex
+        justify-content: center
+        align-items: center
+        padding: 10px
+        margin: 20px 30px
+        border: none
+        border-radius: 30px
+        background: #fff
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px
+
+        &:hover
+            cursor: pointer
+            box-shadow: rgba(60, 64, 67, 0.3) 1px 4px 8px 1px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px
+
+    &-container
+        max-width: 100%
+        display: flex
+        overflow-x: hidden
+        scroll-behavior: smooth
 
 //navLinks.js
 .nav
@@ -93,13 +125,12 @@ p
     align-items: center
 
     .items-grid
-        padding: 50px
+        padding: 20px
         display: flex
         justify-content: center
         flex-flow: row wrap
 
     .btn-group
-        padding-bottom: 40px
         display: flex
         justify-content: center
         align-items: center
@@ -129,23 +160,22 @@ p
     min-width: 250px
     max-width: 250px
     margin: 10px
+    background: variables.$white
     box-sizing: border-box
-    border-color: variables.$yellow
-    border-width: 1px
-    border-style: solid
+    border-radius: 4px
     display: flex
     flex-flow: column nowrap
     justify-content: space-around
-
-    :hover
-        box-shadow: 0px 0px 10px 0px gray
-
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px
     &-container
         display: flex
         align-items: center
+        justify-content: center
+        padding: 10px
 
         &-img
-            width: 248px
+            border-radius: 4px
+            width: 170px
 
     &-div
         display: flex
@@ -194,10 +224,9 @@ p
         display: flex
         flex-direction: row
         align-items: flex-end
-        margin: 25px
 
     .div-grid
-        padding: 50px
+        padding: 20px
         display: flex
         justify-content: center
 
@@ -256,7 +285,7 @@ p
             flex-direction: row
 
             &-btn
-                display: fl
+                display: flex
                 border: 0.5px solid variables.$yellow
                 border-radius: 4px
                 padding: 5px 10px

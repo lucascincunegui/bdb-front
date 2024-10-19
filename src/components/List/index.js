@@ -43,7 +43,7 @@ export default function Lista({ products, itemsPerPage }) {
       <div className="items-grid">
         <ListProductCard items={getPage()} />
       </div>
-      <button className="btn-group">
+      <div className="btn-group">
         {currentPage !== 1 ? (
           <button className="btn" onClick={prevHandler} variant="contained">
             Anterior
@@ -59,7 +59,7 @@ export default function Lista({ products, itemsPerPage }) {
             Seguinte
           </button>
         ) : null}
-      </button>
+      </div>
     </div>
   );
 }

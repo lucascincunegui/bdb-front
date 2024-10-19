@@ -15,7 +15,6 @@ export default function ProductCard({ name, value, link }) {
       <div className="card-div">
         <h1 className="card-div-value">{formatedValue}</h1>
         <h1 className="card-div-name">{name}</h1>
-        <button className="card-div-btn">Ver descrição</button>
       </div>
     </wrapper>
   );

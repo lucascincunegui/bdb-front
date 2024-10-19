@@ -1,49 +1,52 @@
-import React from "react";
-import { Facebook, Instagram } from "@mui/icons-material";
+import React, { useEffect, useState } from "react";
 import "../css/style.css";
+import Carousel from "../components/carousel";
 
+import ProductCard from "../components/card";
+import { getProducts } from "../helpers/API";
+import SocialLink from "../components/socialLink";
 export default function Home() {
-  const facebook = () => {
-    window.open("https://www.facebook.com/bulichu.dosbichos.7");
+  const [product, setProduct] = useState([]);
+
+  const loadData = () => {
+    console.log("Arthur");
+    getProducts().then(setProduct);
   };
 
-  const instagram = () => {
-    window.open("https://www.instagram.com/bulichudosbichos/");
-  };
+  useEffect(loadData, []);
+  function ListProductCard() {
+    return product.map((product, index) => (
+      <ProductCard
+        key={index}
+        name={product.nombre}
+        value={product.valor}
+        link={product.link}
+      />
+    ));
+  }
 
   return (
     <div>
       <p className="p">
         Aqui você encontra tudo o que precisar para o seu pet!
       </p>
-      <div className="social">
-        <div className="social-media" onClick={facebook}>
-          <div className="facebook">
-            <img
-              className="img"
-              alt="Facebook"
-              src="../../assets/facebook.png"
-            />
-            <div className="text-div">
-              <Facebook fontSize="large" />
-              <h1 className="text">CONHEÇA NOSSO FACEBOOK!</h1>
-            </div>
-          </div>
+      <Carousel>
+        <ListProductCard />
+      </Carousel>
+      <Carousel>
+        <div className="social">
+          <SocialLink
+            className="facebook"
+            src="../../assets/facebook.png"
+            alt="Facebook"
+          />
+          <SocialLink
+            className="instagram"
+            src="../../assets/instagram.png"
+            alt="Instagram"
+          />
         </div>
-        <div className="social-media" onClick={instagram}>
-          <div className="instagram">
-            <img
-              style={{ width: 518 }}
-              src="../../assets/instagram.png"
-              alt="Instagram"
-            />
-            <div className="text-div">
-              <Instagram fontSize="large" />
-              <h1 className="text">CONHEÇA NOSSO INSTAGRAM!</h1>
-            </div>
-          </div>
-        </div>
-      </div>
+      </Carousel>
     </div>
   );
 }
